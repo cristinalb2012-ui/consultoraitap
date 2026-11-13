@@ -25,18 +25,18 @@
           },
           colors: {
             navy: {
-              950: '#070b18',
-              900: '#0b132b',
-              850: '#111b38',
-              800: '#1c2541',
-              700: '#273456',
+              950: '#101114',
+              900: '#17191e',
+              850: '#202228',
+              800: '#292c33',
+              700: '#3a3e47',
             },
             brand: {
-              400: '#60a5fa',
-              500: '#3a86ff',
-              600: '#2563eb',
-              700: '#1d4ed8',
-              800: '#1e40af',
+              400: '#ff7777',
+              500: '#ff3b3b',
+              600: '#f02f2f',
+              700: '#d92727',
+              800: '#b91f1f',
             },
             emerald: {
               450: '#10b981',
@@ -59,6 +59,60 @@
     }
   </script>
 
+  <style id="itap-brand-system">
+    :root{--itap-red:#ff3b3b;--itap-red-dark:#e92828;--itap-black:#101114;--itap-ink:#17191e;--itap-muted:#667085;--itap-pale:#fff4f4;--itap-line:#eceef1}
+    html{scroll-behavior:smooth;scroll-padding-top:100px}
+    body{background:#fff;color:var(--itap-ink);font-family:Inter,Arial,sans-serif}
+    ::selection{background:var(--itap-red);color:#fff}
+    .hero-mesh{background:#fff!important;background-image:radial-gradient(circle at 80% 15%,rgba(255,59,59,.09),transparent 32%)!important}
+    .pattern-grid{background-image:radial-gradient(rgba(16,17,20,.10) 1px,transparent 1px)!important}
+    .glass-panel{background:rgba(255,255,255,.96);border:1px solid #e9eaee;box-shadow:0 12px 36px rgba(16,17,20,.045)}
+    .glass-dark{background:#17191e;border:1px solid rgba(255,255,255,.1)}
+    .itap-hero{background:linear-gradient(110deg,#fff 0%,#fff 53%,#fff5f5 100%);min-height:560px}
+    .itap-hero-orbit{position:absolute;width:560px;height:560px;border:1px solid rgba(255,59,59,.12);border-radius:50%;right:-180px;top:-220px;box-shadow:0 0 0 55px rgba(255,59,59,.025),0 0 0 110px rgba(255,59,59,.02)}
+    .itap-eyebrow{display:inline-flex;align-items:center;gap:9px;color:#454850;background:#fff;border:1px solid #eceef1;padding:9px 13px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+    .itap-dot{width:8px;height:8px;border-radius:50%;background:var(--itap-red);box-shadow:0 0 0 4px rgba(255,59,59,.12)}
+    .itap-profile{border:1px solid #e7e8eb;background:#fff;color:#555b66;border-radius:10px;padding:9px 12px;font-size:12px;font-weight:700;transition:.2s}
+    .itap-profile:hover,.itap-profile.active{background:#fff0f0;border-color:#ffb7b7;color:#d92727}
+    .itap-button-primary,.itap-button-secondary{display:inline-flex;align-items:center;justify-content:center;gap:16px;padding:15px 22px;border-radius:12px;font-size:14px;font-weight:800;transition:transform .2s,box-shadow .2s}
+    .itap-button-primary{background:var(--itap-red);color:#fff;box-shadow:0 9px 22px rgba(255,59,59,.2)}
+    .itap-button-primary:hover{background:var(--itap-red-dark);transform:translateY(-2px);box-shadow:0 12px 25px rgba(255,59,59,.25)}
+    .itap-button-secondary{background:#fff;color:#17191e;border:1px solid #dfe1e5}
+    .itap-button-secondary:hover{border-color:var(--itap-red);color:#d92727;transform:translateY(-2px)}
+    .itap-check{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#fff0f0;color:#e92828;font-weight:900;font-size:11px}
+    .itap-hero-photo{height:440px;border-radius:30px 30px 30px 90px;overflow:hidden;position:relative;box-shadow:0 28px 65px rgba(16,17,20,.16);border:8px solid #fff}
+    .itap-hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,59,59,.08),transparent 55%)}
+    .itap-hero-photo img{width:100%;height:100%;object-fit:cover}
+    .itap-float-card{position:absolute;display:flex;align-items:center;gap:11px;background:rgba(255,255,255,.96);padding:12px 16px;border:1px solid #eceef1;border-radius:15px;box-shadow:0 12px 30px rgba(16,17,20,.12);z-index:2}
+    .itap-float-top{top:35px;left:-30px}.itap-float-bottom{bottom:35px;right:-20px}
+    .itap-float-icon{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:#fff0f0;color:#e92828;font-size:24px}
+    .itap-float-card b,.itap-float-card small{display:block}.itap-float-card b{font-size:12px;color:#17191e}.itap-float-card small{font-size:10px;color:#777d87;margin-top:2px}
+    .itap-hero-bottom{height:5px;background:linear-gradient(90deg,#111 0 32%,#ff3b3b 32% 68%,#111 68%)}
+    header{background:rgba(255,255,255,.96)!important;border-color:#eceef1!important;box-shadow:0 4px 24px rgba(16,17,20,.045)!important}
+    header .bg-navy-950{background:#111!important}
+    .bg-navy-950,.bg-navy-900,.bg-navy-850,.bg-navy-800{background-color:#111!important}
+    .text-navy-950,.text-navy-900,.text-navy-800{color:#15171b!important}
+    .bg-brand-50{background:#fff1f1!important}.bg-brand-500,.bg-brand-600,.bg-brand-700{background-color:var(--itap-red)!important}
+    .text-brand-400,.text-brand-500,.text-brand-600,.text-brand-700{color:#e92828!important}
+    .border-brand-200,.border-brand-500{border-color:#ffb6b6!important}
+    .shadow-brand-500\/20,.shadow-brand-500\/30,.shadow-brand-600\/30{box-shadow:0 8px 24px rgba(255,59,59,.16)!important}
+    .bg-gradient-to-r.from-brand-600,.bg-gradient-to-r.from-brand-500{background-image:linear-gradient(110deg,#ff3b3b,#e92828)!important}
+    .bg-gradient-to-r.from-brand-400{background-image:linear-gradient(110deg,#ff7777,#ff3b3b)!important}
+    .bg-emerald-600,.bg-emerald-500{background-color:#222!important}
+    .text-emerald-400,.text-emerald-500,.text-emerald-600{color:#e92828!important}
+    .text-gold-400,.text-gold-500{color:#ff7777!important}
+    .border-gold-500{border-color:#ffb6b6!important}
+    .shadow-glow-gold{box-shadow:0 16px 45px rgba(16,17,20,.18)!important}
+    #servicios-itap{background:linear-gradient(180deg,#fff,#fffafa)!important}
+    #servicios-itap article{border-color:#eceef1;box-shadow:0 9px 30px rgba(16,17,20,.055);transition:transform .25s,box-shadow .25s}
+    #servicios-itap article:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(16,17,20,.11)}
+    #servicios-itap article img{filter:saturate(.88)}
+    section[id]{scroll-margin-top:100px}
+    button,a,input,select,textarea{outline-offset:3px}
+    button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(255,59,59,.35)}
+    @media(max-width:767px){.itap-hero{min-height:auto}.itap-hero-photo{height:290px;border-radius:22px 22px 22px 55px}.itap-float-top{left:-4px;top:15px}.itap-float-bottom{right:-4px;bottom:15px}.itap-eyebrow{font-size:9px}.itap-profile{font-size:10px;padding:8px 9px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
   <style>
     /* Estilos personalizados y utilidades de microinteracción */
     .glass-panel {
@@ -122,16 +176,16 @@
         <div class="flex items-center gap-3">
           <span class="inline-flex items-center gap-1.5 text-emerald-400 font-semibold">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            Fiscalizador Supremo IA: Activo
+            Plataforma de apoyo a la investigación
           </span>
           <span class="hidden sm:inline text-slate-600">|</span>
-          <span class="hidden sm:inline text-slate-400">Auditoría APA 7.ª Ed. y Anti-Plagio en Tiempo Real</span>
+          <span class="hidden sm:inline text-slate-400">Herramientas académicas y acompañamiento especializado</span>
         </div>
         <div class="flex items-center gap-4 text-slate-300">
           <span class="inline-flex items-center gap-1">
-            <span class="text-gold-400">★</span> Scopus, WoS, PubMed & SciELO Verified
+            <span class="text-gold-400">★</span> Investigación · análisis · conocimiento
           </span>
-          <a href="#cotizador" class="text-brand-400 hover:text-white transition font-semibold">Cotizar Asesoría</a>
+          <a href="#cotizador" class="text-brand-400 hover:text-white transition font-semibold">Solicitar asesoría</a>
         </div>
       </div>
     </div>
@@ -156,8 +210,8 @@
           <span>Mi Proyecto</span>
           <span class="px-1.5 py-0.2 rounded-full text-[10px] bg-emerald-100 text-emerald-700 font-bold">En vivo</span>
         </a>
-        <a href="#herramientas" class="hover:text-brand-600 transition">Suite IA (5 Módulos)</a>
-        <a href="#agentes" class="hover:text-brand-600 transition">Red de 12 Agentes</a>
+        <a href="#herramientas" class="hover:text-brand-600 transition">Herramientas</a>
+        <a href="#agentes" class="hover:text-brand-600 transition">Asistentes de investigación</a>
         <a href="#cotizador" class="hover:text-brand-600 transition">Cotizador & Citas</a>
         <a href="#etica" class="hover:text-brand-600 transition">Garantía Ética</a>
       </nav>
@@ -169,7 +223,7 @@
           <span>Chat Coordinador</span>
         </button>
         <a href="#herramientas" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 text-white text-xs sm:text-sm font-bold shadow-md shadow-brand-600/30 hover:shadow-lg hover:shadow-brand-600/40 hover:-translate-y-0.5 transition duration-200">
-          <span>Iniciar Herramientas</span>
+          <span>Comenzar ahora</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
         </a>
       </div>
@@ -179,100 +233,42 @@
   <!-- ========================================== -->
   <!-- 2. HERO SECTION CON AMBIENTACIÓN CIENTÍFICA -->
   <!-- ========================================== -->
-  <section class="relative hero-mesh text-white pt-16 pb-24 lg:pt-20 lg:pb-32 overflow-hidden">
-    <!-- Fondo punteado -->
-    <div class="absolute inset-0 pattern-grid opacity-20 pointer-events-none"></div>
-
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Selector de Perfil Rápido en el Hero -->
-      <div id="perfiles" class="max-w-2xl mx-auto mb-10 text-center">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-semibold text-slate-200 mb-5">
-          <span class="w-2 h-2 rounded-full bg-gold-400"></span>
-          Personaliza tu experiencia según tu nivel académico:
-        </div>
-        
-        <!-- Pestañas de perfiles -->
-        <div class="grid grid-cols-3 gap-2 p-1.5 rounded-2xl bg-navy-950/70 border border-white/10 backdrop-blur-md shadow-inner">
-          <button onclick="setProfile('pregrado')" id="profile-pregrado" class="profile-btn py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all bg-brand-600 text-white shadow-md">
-            🎓 Pregrado
-          </button>
-          <button onclick="setProfile('posgrado')" id="profile-posgrado" class="profile-btn py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all text-slate-300 hover:text-white hover:bg-white/5">
-            🔬 Posgrado (MSc / PhD)
-          </button>
-          <button onclick="setProfile('investigador')" id="profile-investigador" class="profile-btn py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all text-slate-300 hover:text-white hover:bg-white/5">
-            📚 Docente / Investigador
-          </button>
-        </div>
-      </div>
-
-      <!-- Contenido Central del Hero Adaptativo -->
-      <div class="text-center max-w-4xl mx-auto">
-        <div id="heroBadge" class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-semibold uppercase tracking-wider mb-6">
-          Acompañamiento Integral de Tesis de Licenciatura
-        </div>
-
-        <h1 id="heroTitle" class="text-3xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight text-white leading-tight sm:leading-none">
-          Estructura tu Tesis sin Estrés con <span class="bg-gradient-to-r from-brand-400 via-indigo-300 to-emerald-400 bg-clip-text text-transparent">Metodología Rigurosa y APA 7 Impecable</span>
-        </h1>
-
-        <p id="heroDesc" class="mt-6 text-base sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-          Guía paso a paso desde el planteamiento del problema hasta la simulación del jurado de sustentación. Auditoría instantánea con 12 agentes de IA y mentoría sincrónica de doctores investigadores.
-        </p>
-
-        <!-- CTA Buttons -->
-        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#herramientas" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-500 to-indigo-600 text-white font-bold text-base shadow-xl shadow-brand-500/30 hover:scale-105 transition-all flex items-center justify-center gap-3">
-            <span>Usar Suite Interactiva Gratuita</span>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </a>
-          <a href="#dashboard" class="w-full sm:w-auto px-7 py-4 rounded-xl bg-navy-850/80 hover:bg-navy-800 border border-white/20 text-white font-bold text-base transition flex items-center justify-center gap-2">
-            <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-            <span>Ver Dashboard de Tesis</span>
-          </a>
-        </div>
-
-        <!-- 4 Tarjetas de Estadísticas Validadas -->
-        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-left">
-          <div class="glass-dark p-5 rounded-2xl border border-white/10 hover:border-brand-500/50 transition">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-slate-400 uppercase">Citas & Referencias</span>
-              <span class="text-emerald-400 text-xs font-mono font-bold">APA 7</span>
+  <section class="itap-hero relative overflow-hidden">
+    <div class="itap-hero-orbit"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+        <div class="max-w-2xl">
+          <div id="perfiles" class="mb-7">
+            <span class="itap-eyebrow"><span class="itap-dot"></span> Instituto de Tecnología y Asesoría para la Investigación</span>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <button onclick="setProfile('pregrado')" id="profile-pregrado" class="profile-btn itap-profile active">🎓 Pregrado</button>
+              <button onclick="setProfile('posgrado')" id="profile-posgrado" class="profile-btn itap-profile">🔬 Posgrado (MSc / PhD)</button>
+              <button onclick="setProfile('investigador')" id="profile-investigador" class="profile-btn itap-profile">📚 Docente / Investigador</button>
             </div>
-            <div class="text-3xl font-black text-white font-display mt-2">100%</div>
-            <p class="text-xs text-slate-400 mt-1">Correspondencia 1:1 biyectiva sin alucinaciones</p>
           </div>
-
-          <div class="glass-dark p-5 rounded-2xl border border-white/10 hover:border-brand-500/50 transition">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-slate-400 uppercase">Ecosistema IA</span>
-              <span class="text-brand-400 text-xs font-mono font-bold">12 AGENTES</span>
-            </div>
-            <div class="text-3xl font-black text-white font-display mt-2">Fiscalizado</div>
-            <p class="text-xs text-slate-400 mt-1">Supervisión obligatoria por quality-inspector</p>
+          <p class="text-sm font-bold uppercase tracking-[.18em] text-red-600 mb-4">Tu investigación merece avanzar</p>
+          <h1 id="heroTitle" class="text-4xl sm:text-5xl xl:text-6xl font-black font-display tracking-tight text-slate-950 leading-[1.08]">Tu aliado en el camino de la <span class="text-red-600">investigación</span></h1>
+          <p id="heroDesc" class="mt-6 text-lg text-slate-600 max-w-xl leading-relaxed">Herramientas y acompañamiento académico para organizar tus ideas, fortalecer tu trabajo y llevar tus proyectos más lejos.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <a href="#servicios-itap" class="itap-button-primary">Explorar servicios <span aria-hidden="true">→</span></a>
+            <a href="#herramientas" class="itap-button-secondary">Conocer herramientas <span aria-hidden="true">↗</span></a>
           </div>
-
-          <div class="glass-dark p-5 rounded-2xl border border-white/10 hover:border-brand-500/50 transition">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-slate-400 uppercase">Ahorro de Tiempo</span>
-              <span class="text-gold-400 text-xs font-mono font-bold">-75%</span>
-            </div>
-            <div class="text-3xl font-black text-white font-display mt-2">4x Más Rápido</div>
-            <p class="text-xs text-slate-400 mt-1">Construcción booleana y cribado bibliográfico</p>
-          </div>
-
-          <div class="glass-dark p-5 rounded-2xl border border-white/10 hover:border-brand-500/50 transition">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-slate-400 uppercase">Indexación Real</span>
-              <span class="text-indigo-400 text-xs font-mono font-bold">Scopus / WoS</span>
-            </div>
-            <div class="text-3xl font-black text-white font-display mt-2">Q1 - Q4</div>
-            <p class="text-xs text-slate-400 mt-1">Filtro de cuartiles y cero revistas predatorias</p>
+          <div class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-500">
+            <span class="inline-flex items-center gap-2"><span class="itap-check">✓</span> Acompañamiento académico</span>
+            <span class="inline-flex items-center gap-2"><span class="itap-check">✓</span> Recursos para investigar</span>
+            <span class="inline-flex items-center gap-2"><span class="itap-check">✓</span> Orientación especializada</span>
           </div>
         </div>
-
+        <div class="relative">
+          <div class="itap-hero-photo">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&amp;fit=crop&amp;w=1400&amp;q=88" alt="Equipo académico trabajando en computadoras y revisando información" fetchpriority="high">
+          </div>
+          <div class="itap-float-card itap-float-top"><span class="itap-float-icon">▥</span><span><b>Analiza</b><small>Datos e información</small></span></div>
+          <div class="itap-float-card itap-float-bottom"><span class="itap-float-icon">▤</span><span><b>Organiza</b><small>Tu proyecto académico</small></span></div>
+        </div>
       </div>
     </div>
+    <div class="itap-hero-bottom"></div>
   </section>
 
   <!-- Servicios ITAP con imágenes -->
@@ -905,9 +901,9 @@
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-gold-400 border border-gold-400/30 text-xs font-bold uppercase tracking-wider mb-3">
           ⭐ Red Científica Multi-Agente
         </div>
-        <h2 class="text-3xl sm:text-4xl font-black font-display">Los 12 Agentes al Servicio de tu Investigación</h2>
+        <h2 class="text-3xl sm:text-4xl font-black font-display">Asistentes para acompañar tu investigación</h2>
         <p class="text-slate-400 mt-2 text-sm sm:text-base">
-          Estructura jerárquica con orquestación autónoma y auditoría cruzada con mandato resolutivo.
+          Recursos de apoyo para distintas tareas del proceso académico y científico.
         </p>
       </div>
 
@@ -1350,11 +1346,11 @@
       
       // Actualizar botones
       document.querySelectorAll('.profile-btn').forEach(btn => {
-        btn.className = "profile-btn py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all text-slate-300 hover:text-white hover:bg-white/5";
+        btn.className = "profile-btn itap-profile";
       });
       const activeBtn = document.getElementById('profile-' + profileKey);
       if (activeBtn) {
-        activeBtn.className = "profile-btn py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all bg-brand-600 text-white shadow-md";
+        activeBtn.className = "profile-btn itap-profile active";
       }
 
       const badge = document.getElementById('heroBadge');
