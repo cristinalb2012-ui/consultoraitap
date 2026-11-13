@@ -1,0 +1,9 @@
+name = "itap-ai"
+main = "src/index.js"
+compatibility_date = "2026-11-12"
+workers_dev = true
+
+[vars]
+AI_MODEL = "gpt-4o-mini"
+AI_API_URL = "https://api.openai.com/v1/chat/completions"
+ALLOWED_ORIGINS = "https://cristinalb2012-ui.github.io"

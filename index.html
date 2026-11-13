@@ -163,6 +163,10 @@
       background: #94a3b8;
     }
   </style>
+
+<style id="itap-ai-chat-style">
+#chatAdvisorModal{z-index:100!important}#chatAdvisorModal .itap-chat-shell{border:1px solid #e7e7eb;box-shadow:0 28px 90px rgba(16,17,20,.28)}#chatAdvisorModal .itap-chat-head{background:#111;color:#fff;border-bottom:3px solid #ff3b3b}#chatAdvisorModal .itap-chat-avatar{background:#ff3b3b;color:#fff}#chatHistory{background:#f7f7f8;min-height:280px}#chatHistory .itap-user-bubble{background:#ff3b3b;color:#fff;border-radius:16px 16px 4px 16px;padding:11px 13px;max-width:86%;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.55}#chatHistory .itap-bot-bubble{background:#fff;border:1px solid #e7e7eb;color:#25262b;border-radius:4px 16px 16px 16px;padding:12px 14px;max-width:90%;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6;box-shadow:0 3px 12px rgba(16,17,20,.04)}#chatHistory .itap-message-row{display:flex;gap:9px;align-items:flex-start;margin:12px 0}#chatHistory .itap-message-row.user{justify-content:flex-end}#chatHistory .itap-mini-avatar{width:27px;height:27px;display:grid;place-items:center;border-radius:9px;background:#111;color:#fff;font-size:10px;font-weight:900;flex:none}#itapChatFab{position:fixed;right:24px;bottom:24px;z-index:90;display:flex;align-items:center;gap:10px;background:#ff3b3b;color:#fff;border:0;border-radius:999px;padding:13px 18px;font-size:13px;font-weight:800;box-shadow:0 12px 30px rgba(255,59,59,.32);transition:transform .2s,box-shadow .2s}#itapChatFab:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(255,59,59,.4)}#itapChatFab .fab-icon{display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:#111;color:#fff;font-size:15px}#itapChatSend:disabled{opacity:.55;cursor:not-allowed}@media(max-width:640px){#itapChatFab{right:14px;bottom:14px;padding:11px 14px}#chatAdvisorModal{padding:0!important;align-items:flex-end!important}#chatAdvisorModal .itap-chat-shell{max-height:91vh;border-radius:22px 22px 0 0;width:100%}#chatHistory{min-height:240px}}
+</style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
 
@@ -1193,18 +1197,18 @@
   <!-- MODAL / WIDGET DE CHAT DEL COORDINADOR -->
   <!-- ========================================== -->
   <div id="chatAdvisorModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-4">
-    <div class="bg-white w-full max-w-lg rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[85vh]">
+    <div class="itap-chat-shell bg-white w-full max-w-lg rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col max-h-[85vh]">
       <!-- Encabezado del chat -->
-      <div class="bg-navy-950 text-white p-4 flex items-center justify-between">
+      <div class="itap-chat-head p-4 flex items-center justify-between">
         <div class="flex items-center gap-3">
           <div class="w-9 h-9 rounded-xl bg-brand-500 flex items-center justify-center font-bold text-sm">
             🤖
           </div>
           <div>
-            <h4 class="text-sm font-bold">academic-consultant</h4>
+            <h4 class="text-sm font-bold">ITAP AI · Asistente de investigación</h4>
             <span class="text-[10px] text-emerald-400 flex items-center gap-1">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              Coordinador General Activo
+              Asistente inteligente · En línea
             </span>
           </div>
         </div>
@@ -1215,16 +1219,11 @@
 
       <!-- Historial de mensajes -->
       <div id="chatHistory" class="p-4 overflow-y-auto space-y-3 bg-slate-50 flex-1 text-xs">
-        <div class="flex gap-2">
-          <div class="w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center text-[10px] shrink-0 font-bold">AP</div>
-          <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 text-slate-800 shadow-sm max-w-[85%]">
-            ¡Hola! Soy el <strong>Coordinador Académico</strong>. ¿En qué fase de tu investigación te encuentras hoy? Puedo orientarte sobre metodología, formato APA 7 o canalizar tu caso con uno de los 11 agentes especialistas.
-          </div>
-        </div>
+        <div class="itap-message-row"><div class="itap-mini-avatar">IT</div><div class="itap-bot-bubble">¡Hola! Soy ITAP AI, tu asistente académico. Puedo orientarte sobre los servicios y herramientas de esta plataforma, metodología de investigación, APA 7, análisis de datos y publicación científica. ¿Qué necesitas resolver hoy?</div></div>
       </div>
 
       <!-- Preguntas sugeridas -->
-      <div class="p-2.5 bg-slate-100 border-t border-slate-200 flex flex-wrap gap-1.5 text-[11px]">
+      <div class="p-2.5 bg-white border-t border-slate-100 flex flex-wrap gap-1.5 text-[11px]">
         <button onclick="sendChatMessage('¿Cómo redacto mi planteamiento del problema?')" class="px-2.5 py-1 rounded-full bg-white border border-slate-300 hover:bg-slate-50 text-slate-700">
           ¿Cómo redactar el problema?
         </button>
@@ -1238,8 +1237,8 @@
 
       <!-- Entrada de texto -->
       <form onsubmit="handleChatSubmit(event)" class="p-3 bg-white border-t border-slate-200 flex gap-2">
-        <input type="text" id="chatInput" placeholder="Escribe tu consulta metodológica..." class="flex-1 p-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-brand-500 focus:outline-none">
-        <button type="submit" class="px-4 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition">
+        <input type="text" id="chatInput" autocomplete="off" placeholder="Escribe tu pregunta..." class="flex-1 p-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-brand-500 focus:outline-none">
+        <button id="itapChatSend" type="submit" class="px-4 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition">
           Enviar
         </button>
       </form>
@@ -1886,12 +1885,15 @@ Gómez, J., Morales, M., Rojas, F., & Delgado, E. (2020). Inteligencia artificia
       closeBookingModal();
     }
 
-    // --- 6. CHAT DEL AGENTE COORDINADOR ---
+    // --- 6. ITAP AI: CHAT INTELIGENTE CON BACKEND ---
+    const ITAP_CHAT_API_URL = "https://YOUR-WORKER-SUBDOMAIN.workers.dev/api/chat";
+    const itapChatMessages = [];
+    let itapChatBusy = false;
+
     function openChatAdvisor(initialQuery) {
       document.getElementById('chatAdvisorModal').classList.remove('hidden');
-      if (initialQuery) {
-        sendChatMessage(initialQuery);
-      }
+      document.getElementById('chatInput')?.focus();
+      if (initialQuery) sendChatMessage(initialQuery);
     }
 
     function closeChatAdvisor() {
@@ -1902,51 +1904,74 @@ Gómez, J., Morales, M., Rojas, F., & Delgado, E. (2020). Inteligencia artificia
       e.preventDefault();
       const input = document.getElementById('chatInput');
       const val = input.value.trim();
-      if (!val) return;
-      sendChatMessage(val);
+      if (!val || itapChatBusy) return;
       input.value = '';
+      sendChatMessage(val);
     }
 
-    function sendChatMessage(text) {
+    function addItapChatBubble(role, content) {
       const history = document.getElementById('chatHistory');
-      
-      // Mensaje del usuario
-      const userBubble = document.createElement('div');
-      userBubble.className = "flex gap-2 justify-end";
-      userBubble.innerHTML = `
-        <div class="bg-brand-600 p-3 rounded-2xl rounded-tr-none text-white shadow-sm max-w-[85%]">
-          ${text}
-        </div>
-      `;
-      history.appendChild(userBubble);
+      const row = document.createElement('div');
+      row.className = 'itap-message-row' + (role === 'user' ? ' user' : '');
+      if (role !== 'user') {
+        const avatar = document.createElement('div');
+        avatar.className = 'itap-mini-avatar';
+        avatar.textContent = 'IT';
+        row.appendChild(avatar);
+      }
+      const bubble = document.createElement('div');
+      bubble.className = role === 'user' ? 'itap-user-bubble' : 'itap-bot-bubble';
+      bubble.textContent = content;
+      row.appendChild(bubble);
+      history.appendChild(row);
       history.scrollTop = history.scrollHeight;
+      return row;
+    }
 
-      // Respuesta simulada del Coordinador
-      setTimeout(() => {
-        let answer = "Comprendo tu requerimiento. He canalizado tu consulta con el especialista idóneo de nuestra red.";
-        const low = text.toLowerCase();
-
-        if (low.includes('problema') || low.includes('planteamiento')) {
-          answer = "Para estructurar el planteamiento del problema según el método del embudo: 1) Contextualiza el fenómeno a nivel global, 2) Delimita la realidad problemática local, 3) Formula la pregunta general conectando variables. El agente <strong>thesis-advisor</strong> puede revisar tu borrador.";
-        } else if (low.includes('apa') || low.includes('cita')) {
-          answer = "En APA 7, la cita narrativa destaca al autor como sujeto de la oración: 'Pérez (2023) afirma que...'. La cita parentética coloca autor y año entre paréntesis al final: '...la inteligencia artificial (Pérez, 2023)'. Recuerda la regla et al. para ≥3 autores.";
-        } else if (low.includes('muestra') || low.includes('aiken')) {
-          answer = "Puedes usar nuestro módulo en vivo en la sección de herramientas. Para poblaciones finitas requerimos N, margen de error (5%) y nivel de confianza Z=1.96. El agente <strong>instrument-validator</strong> calculará la muestra automáticamente.";
-        } else if (low.includes('scopus') || low.includes('revista')) {
-          answer = "El agente <strong>journal-matcher</strong> analiza índices SJR y cuartiles Q1-Q4. Puedes revisar nuestro comparador en vivo para encontrar revistas sin costo de APC (Open Access Diamante).";
+    async function sendChatMessage(message) {
+      if (itapChatBusy || !message?.trim()) return;
+      const history = document.getElementById('chatHistory');
+      const sendButton = document.getElementById('itapChatSend');
+      const input = document.getElementById('chatInput');
+      itapChatBusy = true;
+      if (sendButton) sendButton.disabled = true;
+      if (input) input.disabled = true;
+      addItapChatBubble('user', message.trim());
+      itapChatMessages.push({ role: 'user', content: message.trim() });
+      const typing = addItapChatBubble('assistant', 'Estoy revisando tu consulta y la información de ITAP…');
+      typing.querySelector('.itap-bot-bubble').setAttribute('aria-live', 'polite');
+      try {
+        if (ITAP_CHAT_API_URL.includes('YOUR-WORKER-SUBDOMAIN')) {
+          throw new Error('El asistente está instalado, pero falta conectar la URL de Cloudflare Workers. Consulta la guía de configuración del proyecto.');
         }
-
-        const botBubble = document.createElement('div');
-        botBubble.className = "flex gap-2";
-        botBubble.innerHTML = `
-          <div class="w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center text-[10px] shrink-0 font-bold">AP</div>
-          <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 text-slate-800 shadow-sm max-w-[85%]">
-            ${answer}
-          </div>
-        `;
-        history.appendChild(botBubble);
+        const response = await fetch(ITAP_CHAT_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: itapChatMessages.slice(-12) })
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(data.error || 'No fue posible obtener una respuesta del asistente.');
+        const answer = typeof data.answer === 'string' ? data.answer : '';
+        if (!answer) throw new Error('El asistente no devolvió una respuesta. Inténtalo nuevamente.');
+        typing.querySelector('.itap-bot-bubble').textContent = answer;
+        itapChatMessages.push({ role: 'assistant', content: answer });
+      } catch (error) {
+        typing.querySelector('.itap-bot-bubble').textContent = error.message || 'Ocurrió un problema de conexión. Inténtalo nuevamente.';
+        itapChatMessages.pop();
+      } finally {
         history.scrollTop = history.scrollHeight;
-      }, 400);
+        itapChatBusy = false;
+        if (sendButton) sendButton.disabled = false;
+        if (input) { input.disabled = false; input.focus(); }
+      }
+    }
+
+    function resetItapChat() {
+      if (itapChatBusy) return;
+      itapChatMessages.length = 0;
+      const history = document.getElementById('chatHistory');
+      history.innerHTML = '';
+      addItapChatBubble('assistant', '¡Hola! Soy ITAP AI, tu asistente académico. Puedo orientarte sobre los servicios y herramientas de esta plataforma, metodología de investigación, APA 7, análisis de datos y publicación científica. ¿Qué necesitas resolver hoy?');
     }
 
     // --- UTILIDADES GLOBALES ---
@@ -2000,5 +2025,7 @@ Gómez, J., Morales, M., Rojas, F., & Delgado, E. (2020). Inteligencia artificia
       if (datePicker) datePicker.value = today;
     });
   </script>
+
+  <button id="itapChatFab" type="button" onclick="openChatAdvisor()" aria-label="Abrir asistente inteligente ITAP"><span class="fab-icon">IT</span><span>¿Necesitas ayuda?</span></button>
 </body>
 </html>
