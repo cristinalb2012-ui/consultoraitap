@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AcademiaPro AI | Ecosistema de Asesoría Académica y Científica con Inteligencia Artificial</title>
+  <title>ITAP | Asesoría Académica y Científica</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -140,15 +140,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <!-- Logotipo & Sello -->
       <a href="#" class="flex items-center gap-3 group">
-        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-navy-900 via-brand-600 to-indigo-600 flex items-center justify-center text-white font-black text-xl shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform duration-200">
-          AP
-        </div>
+        <img src="assets/itap-logo.png" alt="Logo ITAP" class="h-14 w-14 object-contain">
         <div>
-          <div class="flex items-center gap-1.5">
-            <span class="text-2xl font-black text-navy-900 tracking-tight font-display">Academia<span class="text-brand-500">Pro</span></span>
-            <span class="px-1.5 py-0.5 rounded text-[10px] font-extrabold uppercase bg-brand-50 text-brand-600 border border-brand-200">AI 2.0</span>
-          </div>
-          <span class="block text-[10px] font-bold text-slate-400 tracking-wider uppercase -mt-0.5">Consultoría & Acompañamiento Científico</span>
+          <span class="text-2xl font-black text-navy-900 tracking-tight font-display">IT<span class="text-red-500">A</span>P</span>
+          <span class="block text-[10px] font-bold text-slate-400 tracking-wider uppercase">Asesoría académica y científica</span>
         </div>
       </a>
 
@@ -276,6 +271,31 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios ITAP con imágenes -->
+  <section id="servicios-itap" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="text-xs font-bold uppercase tracking-widest text-red-500">Servicios ITAP</span>
+        <h2 class="text-3xl font-extrabold text-navy-900 font-display mt-2">Acompañamiento para cada etapa de tu investigación</h2>
+        <p class="text-slate-600 mt-3">Apoyo académico, revisión científica y herramientas para organizar y fortalecer tu trabajo.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <article class="overflow-hidden rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition">
+          <img src="https://images.unsplash.com/photo-1455390582262-044c724e3a44?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Persona desarrollando un trabajo académico en un escritorio" class="w-full h-52 object-cover" loading="lazy">
+          <div class="p-6"><h3 class="font-bold text-lg text-navy-900">Asesoría de tesis y proyectos</h3><p class="text-sm text-slate-600 mt-2">Orientación para estructurar, desarrollar y revisar proyectos de investigación.</p></div>
+        </article>
+        <article class="overflow-hidden rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition">
+          <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Investigación científica en laboratorio" class="w-full h-52 object-cover" loading="lazy">
+          <div class="p-6"><h3 class="font-bold text-lg text-navy-900">Investigación y revisión científica</h3><p class="text-sm text-slate-600 mt-2">Búsqueda bibliográfica, análisis de fuentes y apoyo para publicaciones académicas.</p></div>
+        </article>
+        <article class="overflow-hidden rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Análisis de datos y gráficos en una pantalla" class="w-full h-52 object-cover" loading="lazy">
+          <div class="p-6"><h3 class="font-bold text-lg text-navy-900">Análisis de datos y herramientas</h3><p class="text-sm text-slate-600 mt-2">Recursos para el análisis, la validación de instrumentos y la presentación de resultados.</p></div>
+        </article>
       </div>
     </div>
   </section>
@@ -1033,11 +1053,6 @@
               <input type="text" id="bookName" required class="w-full p-2.5 rounded-xl border border-slate-300 text-xs" placeholder="Ej. Carlos Mendoza">
             </div>
 
-            <div>
-              <label class="block text-slate-700 mb-1">Correo Institucional / Académico</label>
-              <input type="email" id="bookEmail" required class="w-full p-2.5 rounded-xl border border-slate-300 text-xs" placeholder="cmendoza@universidad.edu">
-            </div>
-
             <div class="grid grid-cols-2 gap-3">
               <div>
                 <label class="block text-slate-700 mb-1">Fecha de Sesión</label>
@@ -1056,12 +1071,13 @@
             </div>
 
             <div>
-              <label class="block text-slate-700 mb-1">Especialista Metodólogo Deseado</label>
+              <label class="block text-slate-700 mb-1">Servicio que necesitas</label>
               <select id="bookSpecialist" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs font-medium bg-white">
-                <option value="Dr. Jorge Morales">Dr. Jorge Morales (Metodología Cuantitativa & Ciencias Sociales)</option>
-                <option value="Dra. Elena Valdivia">Dra. Elena Valdivia (Revisora Scopus Q1 & Ciencias de la Salud)</option>
-                <option value="Mg. Roberto Thorne">Mg. Roberto Thorne (Psicometría, Aiken & Estadística SPSS/R)</option>
-                <option value="Dr. Andrés Salcedo">Dr. Andrés Salcedo (Sustentación & Argumentación Jurídica/Educativa)</option>
+                <option value="Asesoría para tesis y proyectos de investigación">Asesoría para tesis y proyectos de investigación</option>
+                <option value="Revisión académica y normas APA 7">Revisión académica y normas APA 7</option>
+                <option value="Análisis de datos y herramientas estadísticas">Análisis de datos y herramientas estadísticas</option>
+                <option value="Búsqueda bibliográfica y publicación científica">Búsqueda bibliográfica y publicación científica</option>
+                <option value="Preparación de sustentación">Preparación de sustentación</option>
               </select>
             </div>
 
@@ -1857,7 +1873,7 @@ Gómez, J., Morales, M., Rojas, F., & Delgado, E. (2020). Inteligencia artificia
       const price = document.getElementById('totalQuotePrice').innerText;
 
       document.getElementById('ticketName').innerText = name;
-      document.getElementById('ticketSpecialist').innerText = specialist.split(' (')[0];
+      document.getElementById('ticketSpecialist').innerText = specialist;
       document.getElementById('ticketDateTime').innerText = `${date} a las ${time}`;
       document.getElementById('ticketPrice').innerText = price;
       document.getElementById('ticketCode').innerText = "AP-2026-" + Math.floor(1000 + Math.random() * 9000);
@@ -1870,7 +1886,7 @@ Gómez, J., Morales, M., Rojas, F., & Delgado, E. (2020). Inteligencia artificia
     }
 
     function downloadTicketMock() {
-      alert("Comprobante oficial AcademiaPro AI generado en formato digital. Se ha remitido una copia a tu correo institucional con el enlace de Zoom y las instrucciones del Fiscalizador.");
+      alert("La vista previa del comprobante está lista. Esta versión demostrativa no envía correos ni genera un archivo descargable.");
       closeBookingModal();
     }
 
