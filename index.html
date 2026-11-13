@@ -1,0 +1,1992 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AcademiaPro AI | Ecosistema de Asesoría Académica y Científica con Inteligencia Artificial</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            navy: {
+              950: '#070b18',
+              900: '#0b132b',
+              850: '#111b38',
+              800: '#1c2541',
+              700: '#273456',
+            },
+            brand: {
+              400: '#60a5fa',
+              500: '#3a86ff',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+            },
+            emerald: {
+              450: '#10b981',
+              500: '#059669',
+              600: '#047857',
+            },
+            gold: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+            }
+          },
+          boxShadow: {
+            'glow-blue': '0 0 25px -5px rgba(58, 134, 255, 0.4)',
+            'glow-emerald': '0 0 25px -5px rgba(16, 185, 129, 0.35)',
+            'glow-gold': '0 0 25px -5px rgba(245, 158, 11, 0.3)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Estilos personalizados y utilidades de microinteracción */
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    .glass-dark {
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .hero-mesh {
+      background-color: #0b132b;
+      background-image: 
+        radial-gradient(at 10% 20%, rgba(58, 134, 255, 0.28) 0px, transparent 50%),
+        radial-gradient(at 90% 10%, rgba(16, 185, 129, 0.22) 0px, transparent 50%),
+        radial-gradient(at 50% 85%, rgba(245, 158, 11, 0.15) 0px, transparent 55%),
+        radial-gradient(at 80% 80%, rgba(67, 97, 238, 0.25) 0px, transparent 50%);
+    }
+    .pattern-grid {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    /* Animaciones suaves */
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.03); }
+    }
+    .animate-glow {
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+    /* Estilo de scrollbar delgado */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- ========================================== -->
+  <!-- 1. STICKY HEADER CON MONITOR DEL SISTEMA -->
+  <!-- ========================================== -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all duration-200">
+    <!-- Barra superior de estado institucional -->
+    <div class="bg-navy-950 text-slate-300 text-[11px] font-medium py-1.5 px-4 border-b border-slate-800">
+      <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-3">
+          <span class="inline-flex items-center gap-1.5 text-emerald-400 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Fiscalizador Supremo IA: Activo
+          </span>
+          <span class="hidden sm:inline text-slate-600">|</span>
+          <span class="hidden sm:inline text-slate-400">Auditoría APA 7.ª Ed. y Anti-Plagio en Tiempo Real</span>
+        </div>
+        <div class="flex items-center gap-4 text-slate-300">
+          <span class="inline-flex items-center gap-1">
+            <span class="text-gold-400">★</span> Scopus, WoS, PubMed & SciELO Verified
+          </span>
+          <a href="#cotizador" class="text-brand-400 hover:text-white transition font-semibold">Cotizar Asesoría</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navegación principal -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logotipo & Sello -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-navy-900 via-brand-600 to-indigo-600 flex items-center justify-center text-white font-black text-xl shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform duration-200">
+          AP
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-2xl font-black text-navy-900 tracking-tight font-display">Academia<span class="text-brand-500">Pro</span></span>
+            <span class="px-1.5 py-0.5 rounded text-[10px] font-extrabold uppercase bg-brand-50 text-brand-600 border border-brand-200">AI 2.0</span>
+          </div>
+          <span class="block text-[10px] font-bold text-slate-400 tracking-wider uppercase -mt-0.5">Consultoría & Acompañamiento Científico</span>
+        </div>
+      </a>
+
+      <!-- Menú Desktop -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-600">
+        <a href="#perfiles" class="hover:text-brand-600 transition flex items-center gap-1">
+          <span>Perfiles</span>
+        </a>
+        <a href="#dashboard" class="hover:text-brand-600 transition flex items-center gap-1">
+          <span>Mi Proyecto</span>
+          <span class="px-1.5 py-0.2 rounded-full text-[10px] bg-emerald-100 text-emerald-700 font-bold">En vivo</span>
+        </a>
+        <a href="#herramientas" class="hover:text-brand-600 transition">Suite IA (5 Módulos)</a>
+        <a href="#agentes" class="hover:text-brand-600 transition">Red de 12 Agentes</a>
+        <a href="#cotizador" class="hover:text-brand-600 transition">Cotizador & Citas</a>
+        <a href="#etica" class="hover:text-brand-600 transition">Garantía Ética</a>
+      </nav>
+
+      <!-- Botones de Acción -->
+      <div class="flex items-center gap-3">
+        <button onclick="openChatAdvisor('¿Cómo puedo iniciar mi diagnóstico de tesis o artículo?')" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition border border-slate-200">
+          <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          <span>Chat Coordinador</span>
+        </button>
+        <a href="#herramientas" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 text-white text-xs sm:text-sm font-bold shadow-md shadow-brand-600/30 hover:shadow-lg hover:shadow-brand-600/40 hover:-translate-y-0.5 transition duration-200">
+          <span>Iniciar Herramientas</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- 2. HERO SECTION CON AMBIENTACIÓN CIENTÍFICA -->
+  <!-- ========================================== -->
+  <section class="relative hero-mesh text-white pt-16 pb-24 lg:pt-20 lg:pb-32 overflow-hidden">
+    <!-- Fondo punteado -->
+    <div class="absolute inset-0 pattern-grid opacity-20 pointer-events-none"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Selector de Perfil Rápido en el Hero -->
+      <div id="perfiles" class="max-w-2xl mx-auto mb-10 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-semibold text-slate-200 mb-5">
+          <span class="w-2 h-2 rounded-full bg-gold-400"></span>
+          Personaliza tu experiencia según tu nivel académico:
+        </div>
+        
+        <!-- Pestañas de perfiles -->
+        <div class="grid grid-cols-3 gap-2 p-1.5 rounded-2xl bg-navy-950/70 border border-white/10 backdrop-blur-md shadow-inner">
+          <button onclick="setProfile('pregrado')" id="profile-pregrado" class="profile-btn py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all bg-brand-600 text-white shadow-md">
+            🎓 Pregrado
+          </button>
+          <button onclick="setProfile('posgrado')" id="profile-posgrado" class="profile-btn py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all text-slate-300 hover:text-white hover:bg-white/5">
+            🔬 Posgrado (MSc / PhD)
+          </button>
+          <button onclick="setProfile('investigador')" id="profile-investigador" class="profile-btn py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all text-slate-300 hover:text-white hover:bg-white/5">
+            📚 Docente / Investigador
+          </button>
+        </div>
+      </div>
+
+      <!-- Contenido Central del Hero Adaptativo -->
+      <div class="text-center max-w-4xl mx-auto">
+        <div id="heroBadge" class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-semibold uppercase tracking-wider mb-6">
+          Acompañamiento Integral de Tesis de Licenciatura
+        </div>
+
+        <h1 id="heroTitle" class="text-3xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight text-white leading-tight sm:leading-none">
+          Estructura tu Tesis sin Estrés con <span class="bg-gradient-to-r from-brand-400 via-indigo-300 to-emerald-400 bg-clip-text text-transparent">Metodología Rigurosa y APA 7 Impecable</span>
+        </h1>
+
+        <p id="heroDesc" class="mt-6 text-base sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          Guía paso a paso desde el planteamiento del problema hasta la simulación del jurado de sustentación. Auditoría instantánea con 12 agentes de IA y mentoría sincrónica de doctores investigadores.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#herramientas" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-500 to-indigo-600 text-white font-bold text-base shadow-xl shadow-brand-500/30 hover:scale-105 transition-all flex items-center justify-center gap-3">
+            <span>Usar Suite Interactiva Gratuita</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <a href="#dashboard" class="w-full sm:w-auto px-7 py-4 rounded-xl bg-navy-850/80 hover:bg-navy-800 border border-white/20 text-white font-bold text-base transition flex items-center justify-center gap-2">
+            <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            <span>Ver Dashboard de Tesis</span>
+          </a>
+        </div>
+
+        <!-- 4 Tarjetas de Estadísticas Validadas -->
+        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-left">
+          <div class="glass-dark p-5 rounded-2xl border border-white/10 hover:border-brand-500/50 transition">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-400 uppercase">Citas & Referencias</span>
+              <span class="text-emerald-400 text-xs font-mono font-bold">APA 7</span>
+            </div>
+            <div class="text-3xl font-black text-white font-display mt-2">100%</div>
+            <p class="text-xs text-slate-400 mt-1">Correspondencia 1:1 biyectiva sin alucinaciones</p>
+          </div>
+
+          <div class="glass-dark p-5 rounded-2xl border border-white/10 hover:border-brand-500/50 transition">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-400 uppercase">Ecosistema IA</span>
+              <span class="text-brand-400 text-xs font-mono font-bold">12 AGENTES</span>
+            </div>
+            <div class="text-3xl font-black text-white font-display mt-2">Fiscalizado</div>
+            <p class="text-xs text-slate-400 mt-1">Supervisión obligatoria por quality-inspector</p>
+          </div>
+
+          <div class="glass-dark p-5 rounded-2xl border border-white/10 hover:border-brand-500/50 transition">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-400 uppercase">Ahorro de Tiempo</span>
+              <span class="text-gold-400 text-xs font-mono font-bold">-75%</span>
+            </div>
+            <div class="text-3xl font-black text-white font-display mt-2">4x Más Rápido</div>
+            <p class="text-xs text-slate-400 mt-1">Construcción booleana y cribado bibliográfico</p>
+          </div>
+
+          <div class="glass-dark p-5 rounded-2xl border border-white/10 hover:border-brand-500/50 transition">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-400 uppercase">Indexación Real</span>
+              <span class="text-indigo-400 text-xs font-mono font-bold">Scopus / WoS</span>
+            </div>
+            <div class="text-3xl font-black text-white font-display mt-2">Q1 - Q4</div>
+            <p class="text-xs text-slate-400 mt-1">Filtro de cuartiles y cero revistas predatorias</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 3. DASHBOARD DEL INVESTIGADOR / TESISTA -->
+  <!-- ========================================== -->
+  <section id="dashboard" class="py-20 bg-slate-100 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-50 text-brand-700 text-xs font-bold uppercase tracking-wider mb-2">
+            <span>📊</span> Portal Interactivo del Investigador
+          </div>
+          <h2 class="text-3xl font-extrabold text-navy-900 font-display">Simulador de Avance: "Mi Proyecto de Investigación"</h2>
+          <p class="text-slate-600 text-sm mt-1">Haz clic en los hitos o checklists para calcular en vivo el progreso metodológico y la consistencia de tu manuscrito.</p>
+        </div>
+
+        <!-- Acciones del Dashboard -->
+        <div class="flex items-center gap-3">
+          <button onclick="resetDashboard()" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 transition shadow-sm">
+            Restablecer Hitos
+          </button>
+          <button onclick="simulateFullThesis()" class="px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-sm flex items-center gap-1.5">
+            <span>✓ Simular Tesis Aprobada (100%)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Barra de Progreso General -->
+      <div class="glass-panel p-6 rounded-2xl shadow-sm border border-slate-200 mb-8">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-3">
+          <div>
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Estado Global de Conformidad y Metodología</span>
+            <h3 class="text-xl font-black text-navy-900 font-display" id="projectTitle">Tesis: "Impacto del Trabajo Remoto en la Productividad Académica"</h3>
+          </div>
+          <div class="text-right">
+            <span class="text-3xl font-black text-brand-600 font-display" id="progressPercentage">57%</span>
+            <span class="block text-xs font-semibold text-slate-500">Progreso Acreditado</span>
+          </div>
+        </div>
+
+        <!-- Barra visual -->
+        <div class="w-full bg-slate-200 h-3.5 rounded-full overflow-hidden p-0.5">
+          <div id="mainProgressBar" class="h-full bg-gradient-to-r from-brand-500 via-indigo-600 to-emerald-500 rounded-full transition-all duration-500" style="width: 57%;"></div>
+        </div>
+
+        <!-- 7 Hitos Visuales Clickeables -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 mt-6" id="milestonesContainer">
+          <!-- Inyectado dinámicamente por JS -->
+        </div>
+      </div>
+
+      <!-- Semáforo de Consistencia Metodológica & Checklist de Tareas -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Checklist interactivo (2 columnas de ancho) -->
+        <div class="lg:col-span-2 glass-panel p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div>
+              <h4 class="text-lg font-bold text-navy-900">Checklist de Auditoría y Entregables Críticos</h4>
+              <p class="text-xs text-slate-500">Marca o desmarca los entregables para actualizar tu estado en tiempo real.</p>
+            </div>
+            <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-200" id="completedCounter">
+              4 / 7 Completados
+            </span>
+          </div>
+
+          <div class="space-y-3" id="checklistTasks">
+            <!-- Items de checklist -->
+          </div>
+        </div>
+
+        <!-- Semáforo de Calidad y Consistencia -->
+        <div class="glass-panel p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-xl">🚦</span>
+              <h4 class="text-lg font-bold text-navy-900">Semáforo de Rigor Epistémico</h4>
+            </div>
+            <p class="text-xs text-slate-600 mb-6">Auditoría cruzada en tiempo real ejecutada por el agente fiscalizador.</p>
+
+            <div class="space-y-4">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-xs font-bold text-slate-700">Congruencia Problema-Objetivo</span>
+                  <span class="px-2 py-0.5 rounded text-[11px] font-black bg-emerald-100 text-emerald-800">100% ÓPTIMO</span>
+                </div>
+                <div class="text-[11px] text-slate-500">Verbo taxonómico alineado con el nivel investigativo.</div>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-xs font-bold text-slate-700">Correspondencia APA 7 (1:1)</span>
+                  <span class="px-2 py-0.5 rounded text-[11px] font-black bg-emerald-100 text-emerald-800">100% SIN ERRORES</span>
+                </div>
+                <div class="text-[11px] text-slate-500">Cada cita en el texto cuenta con su referencia exacta.</div>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-xs font-bold text-slate-700">Índice de Similitud (Turnitin)</span>
+                  <span class="px-2 py-0.5 rounded text-[11px] font-black bg-blue-100 text-blue-800">4.8% SEGURO</span>
+                </div>
+                <div class="text-[11px] text-slate-500">Muy por debajo del límite universitario máximo (15%-20%).</div>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-xs font-bold text-slate-700">Validez Psicométrica (Aiken)</span>
+                  <span class="px-2 py-0.5 rounded text-[11px] font-black bg-emerald-100 text-emerald-800">V = 0.93 ACEPTADO</span>
+                </div>
+                <div class="text-[11px] text-slate-500">5 jueces expertos con concordancia estadísticamente significativa.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-200">
+            <button onclick="triggerQualityAudit()" class="w-full py-2.5 rounded-xl bg-navy-900 text-white font-bold text-xs hover:bg-navy-800 transition shadow flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>Ejecutar Dictamen del Fiscalizador</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 4. SUITE INTERACTIVA DE 5 HERRAMIENTAS IA -->
+  <!-- ========================================== -->
+  <section id="herramientas" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs font-bold uppercase tracking-wider mb-3">
+          ⚡ Potencia Computacional Académica
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black text-navy-900 font-display">Suite Interactiva de 5 Herramientas Científicas</h2>
+        <p class="text-slate-600 mt-2 text-base">Motores automatizados desarrollados conforme a las normativas de Scopus, WoS y el manual APA 7.ª edición.</p>
+      </div>
+
+      <!-- Selector de Módulos (Tabs) -->
+      <div class="flex overflow-x-auto pb-2 sm:pb-0 gap-2 p-1.5 rounded-2xl bg-slate-100 max-w-4xl mx-auto mb-10 text-xs sm:text-sm font-bold shadow-inner">
+        <button onclick="selectToolTab('apa')" id="tabBtn-apa" class="tool-tab flex-1 min-w-[140px] py-3 px-3 rounded-xl bg-white text-brand-600 shadow-sm transition">
+          1. Auditor APA 7
+        </button>
+        <button onclick="selectToolTab('booleano')" id="tabBtn-booleano" class="tool-tab flex-1 min-w-[140px] py-3 px-3 rounded-xl text-slate-600 hover:text-navy-900 transition">
+          2. Ecuaciones Booleano
+        </button>
+        <button onclick="selectToolTab('revistas')" id="tabBtn-revistas" class="tool-tab flex-1 min-w-[140px] py-3 px-3 rounded-xl text-slate-600 hover:text-navy-900 transition">
+          3. Comparador Revistas
+        </button>
+        <button onclick="selectToolTab('psicometria')" id="tabBtn-psicometria" class="tool-tab flex-1 min-w-[140px] py-3 px-3 rounded-xl text-slate-600 hover:text-navy-900 transition">
+          4. Muestreo & Aiken
+        </button>
+        <button onclick="selectToolTab('matriz')" id="tabBtn-matriz" class="tool-tab flex-1 min-w-[140px] py-3 px-3 rounded-xl text-slate-600 hover:text-navy-900 transition">
+          5. Matriz Consistencia
+        </button>
+      </div>
+
+      <!-- CONTENIDO DE HERRAMIENTAS -->
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- ============================================== -->
+        <!-- MÓDULO 1: AUDITOR Y CORRECTOR APA 7 EN VIVO -->
+        <!-- ============================================== -->
+        <div id="toolView-apa" class="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xl">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-6 pb-4 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 font-black flex items-center justify-center">
+                APA
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-navy-900">Auditor y Formateador APA 7.ª Edición</h3>
+                <p class="text-xs text-slate-500">Agentes a cargo: <span class="font-bold text-brand-600">apa7-specialist</span> y <span class="font-bold text-indigo-600">quality-inspector</span></p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold rounded-lg border border-emerald-200">Regla 'et al.' $\ge 3$</span>
+              <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-lg border border-blue-200">Supresión Ciudad Editorial</span>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <label class="text-xs font-bold text-slate-700 uppercase">Texto o Referencias a Auditar</label>
+              <div class="flex items-center gap-2">
+                <button onclick="loadSampleAPACorrect()" class="text-xs font-semibold text-emerald-600 hover:underline">Ejemplo Válido</button>
+                <span class="text-slate-300">|</span>
+                <button onclick="loadSampleAPAErrors()" class="text-xs font-semibold text-brand-600 hover:underline">Cargar Ejemplo con Errores Comunes</button>
+              </div>
+            </div>
+
+            <textarea id="apaTextInput" rows="5" class="w-full p-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm font-sans text-slate-800 leading-relaxed shadow-inner" placeholder="Pega un párrafo con citas en el texto o una lista de referencias..."></textarea>
+
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+              <button onclick="executeAPAAudit()" class="px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm rounded-xl transition shadow-md shadow-brand-500/20 flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                <span>Auditar y Corregir Formato</span>
+              </button>
+              <span class="text-xs text-slate-400">Verifica: citas múltiples, puntuación, DOI https://doi.org/...</span>
+            </div>
+
+            <!-- Panel de Resultados APA -->
+            <div id="apaAuditResult" class="hidden mt-6 space-y-4 pt-4 border-t border-slate-200">
+              <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900">
+                <div class="flex items-center gap-2 font-bold text-sm mb-2 text-amber-900">
+                  <span>⚠️</span>
+                  <span>Discrepancias Detectadas por el Fiscalizador (Norma APA 7):</span>
+                </div>
+                <ul class="list-disc list-inside space-y-1.5 text-xs text-amber-800" id="apaAuditIssuesList">
+                  <!-- Llenado dinámico -->
+                </ul>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-slate-900 text-slate-100 border border-slate-800 relative">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    Versión Homologada y Corregida (APA 7):
+                  </span>
+                  <button onclick="copyToClipboard('apaOutputText', this)" class="px-3 py-1 rounded-md bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                    <span>Copiar</span>
+                  </button>
+                </div>
+                <pre id="apaOutputText" class="font-sans text-xs text-slate-200 whitespace-pre-wrap leading-relaxed bg-navy-950/60 p-3.5 rounded-xl border border-white/10"></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- MÓDULO 2: CONSTRUCTOR BOOLEANO AVANZADO -->
+        <!-- ============================================== -->
+        <div id="toolView-booleano" class="hidden glass-panel p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xl">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-6 pb-4 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 font-black flex items-center justify-center">
+                🔍
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-navy-900">Constructor de Ecuaciones para Scopus, WoS y PubMed</h3>
+                <p class="text-xs text-slate-500">Agente a cargo: <span class="font-bold text-brand-600">scientific-researcher</span> (Protocolo PRISMA 2020)</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <label class="text-xs font-bold text-slate-600">Base Objetivo:</label>
+              <select id="dbSelector" onchange="buildBooleanEquation()" class="p-1.5 rounded-lg border border-slate-300 text-xs font-bold bg-white focus:outline-none">
+                <option value="scopus">Scopus (TITLE-ABS-KEY)</option>
+                <option value="wos">Web of Science (TS=)</option>
+                <option value="pubmed">PubMed ([Title/Abstract])</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">1. Población / Fenómeno (P)</label>
+                <input type="text" id="boolTermP" value="artificial intelligence, generative AI" oninput="buildBooleanEquation()" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs" placeholder="Separar sinónimos por coma">
+                <span class="text-[10px] text-slate-400">Sinónimos se unirán con OR</span>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">2. Intervención / Variable (I)</label>
+                <input type="text" id="boolTermI" value="academic writing, scientific paper, thesis" oninput="buildBooleanEquation()" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs" placeholder="Separar sinónimos por coma">
+                <span class="text-[10px] text-slate-400">Sinónimos se unirán con OR</span>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">3. Contexto / Ámbito (C)</label>
+                <input type="text" id="boolTermC" value="higher education, university students" oninput="buildBooleanEquation()" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs" placeholder="Separar sinónimos por coma">
+                <span class="text-[10px] text-slate-400">Sinónimos se unirán con OR</span>
+              </div>
+            </div>
+
+            <!-- Opciones avanzadas de operadores -->
+            <div class="flex flex-wrap items-center justify-between gap-4 p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs">
+              <div class="flex items-center gap-4">
+                <label class="inline-flex items-center gap-1.5 cursor-pointer font-medium text-slate-700">
+                  <input type="checkbox" id="boolWildcard" onchange="buildBooleanEquation()" checked class="rounded text-brand-600 focus:ring-brand-500">
+                  <span>Aplicar truncadores automáticos (*)</span>
+                </label>
+                <label class="inline-flex items-center gap-1.5 cursor-pointer font-medium text-slate-700">
+                  <input type="checkbox" id="boolQuotes" onchange="buildBooleanEquation()" checked class="rounded text-brand-600 focus:ring-brand-500">
+                  <span>Comillas en frases compuestas ("...")</span>
+                </label>
+              </div>
+              <div>
+                <label class="text-slate-600 font-bold mr-1">Término de Exclusión (NOT):</label>
+                <input type="text" id="boolTermNot" value="robotics, hardware" oninput="buildBooleanEquation()" class="p-1 px-2 border border-slate-300 rounded text-xs w-36" placeholder="Opcional">
+              </div>
+            </div>
+
+            <!-- Ecuación Generada -->
+            <div class="p-5 rounded-2xl bg-navy-950 text-slate-100 border border-slate-800 relative">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-brand-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-brand-400"></span>
+                  Ecuación Sintáctica Lista para Pegar en Base de Datos:
+                </span>
+                <button onclick="copyToClipboard('booleanOutputQuery', this)" class="px-3 py-1 rounded-md bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                  <span>Copiar Ecuación</span>
+                </button>
+              </div>
+              <div id="booleanOutputQuery" class="font-mono text-xs text-emerald-400 whitespace-pre-wrap break-all leading-relaxed bg-navy-900/80 p-3.5 rounded-xl border border-white/10">
+                <!-- Se llena con JS -->
+              </div>
+              <div class="mt-3 flex items-center justify-between text-[11px] text-slate-400">
+                <span>Total de bloques booleanos combinados: 3 (AND) + 1 (NOT)</span>
+                <span class="text-gold-400 font-semibold">Garantía PRISMA 2020: Reproducibilidad 100%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- MÓDULO 3: BUSCADOR Y COMPARADOR DE REVISTAS -->
+        <!-- ============================================== -->
+        <div id="toolView-revistas" class="hidden glass-panel p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xl">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-6 pb-4 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-gold-100 text-gold-700 font-black flex items-center justify-center">
+                🎯
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-navy-900">Buscador y Comparador de Revistas Indexadas</h3>
+                <p class="text-xs text-slate-500">Agente a cargo: <span class="font-bold text-brand-600">journal-matcher</span> (Métricas SJR, JCR y Filtro Anti-Predatorias)</p>
+              </div>
+            </div>
+            <span class="px-2.5 py-1 bg-amber-50 text-amber-800 text-xs font-bold rounded-lg border border-amber-200">Revistas Auditadas 2026</span>
+          </div>
+
+          <!-- Filtros de Búsqueda -->
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 mb-6">
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-bold text-slate-700 mb-1">Buscar por Nombre, ISSN o Disciplina</label>
+              <input type="text" id="journalSearchInput" oninput="filterJournals()" placeholder="Ej. Comunicar, Educación, Computers, Q1..." class="w-full p-2.5 rounded-xl border border-slate-300 text-xs">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Cuartil SJR/JCR</label>
+              <select id="journalQuartileFilter" onchange="filterJournals()" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs font-medium bg-white">
+                <option value="ALL">Todos los cuartiles</option>
+                <option value="Q1">Solo Q1 (Alto Impacto)</option>
+                <option value="Q2">Solo Q2</option>
+                <option value="Q3">Solo Q3</option>
+                <option value="Q4">Solo Q4 / SciELO</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Costo de Publicación (APC)</label>
+              <select id="journalApcFilter" onchange="filterJournals()" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs font-medium bg-white">
+                <option value="ALL">Todos los costos</option>
+                <option value="FREE">Gratis (Sin APC / Diamante)</option>
+                <option value="APC">Con APC (Open Access)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Tabla de Revistas Dinámica -->
+          <div class="overflow-x-auto rounded-2xl border border-slate-200">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead class="bg-slate-100 text-slate-700 font-bold uppercase tracking-wider text-[11px] border-b border-slate-200">
+                <tr>
+                  <th class="p-3.5">Revista & Editorial</th>
+                  <th class="p-3.5">Área / Campo</th>
+                  <th class="p-3.5">Cuartil & SJR</th>
+                  <th class="p-3.5">Indexación</th>
+                  <th class="p-3.5">Tiempo Decisión</th>
+                  <th class="p-3.5">APC</th>
+                  <th class="p-3.5 text-center">Acción</th>
+                </tr>
+              </thead>
+              <tbody id="journalsTableBody" class="divide-y divide-slate-200 bg-white">
+                <!-- Se inyecta dinámicamente -->
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-4 flex items-center justify-between text-xs text-slate-500">
+            <span id="journalCountNotice">Mostrando 6 revistas científicas verificadas</span>
+            <span class="text-emerald-600 font-bold">✓ Cero revistas predatorias registradas</span>
+          </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- MÓDULO 4: CALCULADORA MUESTRAL Y PSICOMETRÍA -->
+        <!-- ============================================== -->
+        <div id="toolView-psicometria" class="hidden glass-panel p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xl">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-6 pb-4 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 font-black flex items-center justify-center">
+                📐
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-navy-900">Calculadora Psicométrica & Tamaño de Muestra</h3>
+                <p class="text-xs text-slate-500">Agente a cargo: <span class="font-bold text-brand-600">instrument-validator</span> (V de Aiken, Confiabilidad & Muestreo)</p>
+              </div>
+            </div>
+            <!-- Subtabs -->
+            <div class="flex gap-1 p-1 bg-slate-100 rounded-xl text-xs font-bold">
+              <button onclick="togglePsicoSubTab('muestral')" id="subtab-muestral" class="px-3 py-1.5 rounded-lg bg-white text-purple-700 shadow-sm">Tamaño de Muestra</button>
+              <button onclick="togglePsicoSubTab('aiken')" id="subtab-aiken" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-navy-900">V de Aiken (Expertos)</button>
+            </div>
+          </div>
+
+          <!-- Subpestaña A: Tamaño de Muestra -->
+          <div id="psico-muestral-view" class="space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Tipo de Población</label>
+                <select id="sampleType" onchange="calcSampleAdvanced()" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs font-medium bg-white">
+                  <option value="finita">Población Finita (Conocida N)</option>
+                  <option value="infinita">Población Infinita / Desconocida</option>
+                </select>
+              </div>
+              <div id="popFieldWrapper">
+                <label class="block text-xs font-bold text-slate-700 mb-1">Tamaño Poblacional (N)</label>
+                <input type="number" id="advPopN" value="1500" oninput="calcSampleAdvanced()" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs font-medium">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Margen de Error (e %)</label>
+                <input type="number" id="advMargin" value="5" step="0.5" oninput="calcSampleAdvanced()" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs font-medium">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Nivel de Confianza</label>
+                <select id="advConfZ" onchange="calcSampleAdvanced()" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs font-medium bg-white">
+                  <option value="1.96">95% (Z = 1.96)</option>
+                  <option value="2.576">99% (Z = 2.576)</option>
+                  <option value="1.645">90% (Z = 1.645)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Resultado del Cálculo Muestral -->
+            <div class="p-6 rounded-2xl bg-gradient-to-r from-purple-50 via-indigo-50 to-blue-50 border border-purple-200 flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-purple-700">Muestra Mínima Representativa (n):</span>
+                <div class="text-4xl font-black text-navy-900 font-display mt-1" id="advSampleResult">306 participantes</div>
+                <p class="text-xs text-slate-600 mt-2">
+                  Cálculo asumiendo máxima varianza esperada ($p = 0.5$, $q = 0.5$). Incluye sugerencia metodológica para justificación formal.
+                </p>
+              </div>
+              <div class="w-full sm:w-auto text-right">
+                <button onclick="copySampleJustification()" class="px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-1.5">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                  <span>Copiar Justificación Metodológica</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Subpestaña B: Validador V de Aiken -->
+          <div id="psico-aiken-view" class="hidden space-y-6">
+            <p class="text-xs text-slate-600">
+              Ingresa la calificación asignada por los jueces expertos a un reactivo o ítem (escala Likert de 1 a 5). La fórmula estándar es $V = \frac{S}{n \cdot (c - 1)}$, donde $S = \sum (s_i - 1)$.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Número de Jueces Expertos (n)</label>
+                <select id="aikenJudgesCount" onchange="renderAikenJudgesInputs()" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs font-medium bg-white">
+                  <option value="3">3 Jueces</option>
+                  <option value="5" selected>5 Jueces</option>
+                  <option value="7">7 Jueces</option>
+                  <option value="10">10 Jueces</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Escala de Valoración Máxima (c)</label>
+                <select id="aikenScaleMax" onchange="calculateAiken()" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs font-medium bg-white">
+                  <option value="5" selected>1 a 5 (Escala Likert estándar)</option>
+                  <option value="4">1 a 4 (Sin punto neutro)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Criterio Psicométrico</label>
+                <div class="p-2.5 rounded-xl bg-slate-100 text-[11px] font-bold text-slate-700">
+                  Validez Aceptable: V ≥ 0.80 (p &lt; .05)
+                </div>
+              </div>
+            </div>
+
+            <!-- Puntajes individuales de los jueces -->
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-2">Puntuaciones Asignadas por Cada Juez para el Ítem en Evaluación:</label>
+              <div class="grid grid-cols-2 sm:grid-cols-5 gap-3" id="aikenInputsContainer">
+                <!-- Inyectado por JS -->
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-900 text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <span class="text-xs font-bold text-gold-400 uppercase tracking-wider">Coeficiente V de Aiken Calculado:</span>
+                <div class="text-3xl font-black font-display mt-1 text-emerald-400" id="aikenResultValue">V = 0.95</div>
+                <div class="text-xs text-slate-300 mt-1" id="aikenVerdictText">Veredicto: Validez de contenido excelente y estadísticamente significativa.</div>
+              </div>
+              <button onclick="generateAikenCertificate()" class="px-4 py-2.5 rounded-xl bg-gold-500 hover:bg-gold-600 text-navy-950 font-black text-xs transition shadow flex items-center gap-1.5">
+                <span>📄 Generar Ficha para Tesis</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- MÓDULO 5: GENERADOR DE MATRIZ DE CONSISTENCIA -->
+        <!-- ============================================== -->
+        <div id="toolView-matriz" class="hidden glass-panel p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xl">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-6 pb-4 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 font-black flex items-center justify-center">
+                📋
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-navy-900">Generador Rápido de Matriz de Consistencia Metodológica</h3>
+                <p class="text-xs text-slate-500">Agente a cargo: <span class="font-bold text-brand-600">thesis-advisor</span> (Alineación Hipotético-Deductiva)</p>
+              </div>
+            </div>
+            <button onclick="loadSampleMatrix()" class="text-xs font-bold text-brand-600 hover:underline">
+              Cargar Ejemplo de Negocios & Salud
+            </button>
+          </div>
+
+          <div class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Variable Independiente (V1 / Causa o Fenómeno)</label>
+                <input type="text" id="matrizV1" value="Liderazgo Transformacional" oninput="generateMatrixInRealtime()" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Variable Dependiente (V2 / Efecto o Resultado)</label>
+                <input type="text" id="matrizV2" value="Compromiso Organizacional" oninput="generateMatrixInRealtime()" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Población / Unidad de Análisis</label>
+                <input type="text" id="matrizPoblacion" value="docentes universitarios" oninput="generateMatrixInRealtime()" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Contexto Espacio-Temporal</label>
+                <input type="text" id="matrizContexto" value="Lima Metropolitana, 2026" oninput="generateMatrixInRealtime()" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs">
+              </div>
+            </div>
+
+            <!-- Tabla de Consistencia Generada -->
+            <div class="mt-6 overflow-x-auto rounded-2xl border border-slate-200">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead class="bg-navy-900 text-white font-bold uppercase tracking-wider text-[11px]">
+                  <tr>
+                    <th class="p-3 w-1/4">Problema General</th>
+                    <th class="p-3 w-1/4">Objetivo General</th>
+                    <th class="p-3 w-1/4">Hipótesis General</th>
+                    <th class="p-3 w-1/4">Diseño y Variables</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 bg-white text-slate-700">
+                  <tr>
+                    <td class="p-3.5 align-top" id="matrixColProblema">
+                      ¿De qué manera el liderazgo transformacional se relaciona con el compromiso organizacional en docentes universitarios de Lima Metropolitana, 2026?
+                    </td>
+                    <td class="p-3.5 align-top" id="matrixColObjetivo">
+                      Determinar la relación entre el liderazgo transformacional y el compromiso organizacional en docentes universitarios de Lima Metropolitana, 2026.
+                    </td>
+                    <td class="p-3.5 align-top" id="matrixColHipotesis">
+                      Existe una relación estadísticamente significativa entre el liderazgo transformacional y el compromiso organizacional en docentes universitarios de Lima Metropolitana, 2026.
+                    </td>
+                    <td class="p-3.5 align-top" id="matrixColMetodo">
+                      <div class="font-bold text-navy-900">Enfoque: Cuantitativo</div>
+                      <div>Alcance: Correlacional</div>
+                      <div>Diseño: No experimental, transversal</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="flex items-center justify-between pt-2">
+              <span class="text-xs text-slate-500">Alineación lógica validada por el Fiscalizador Supremo de Metodología.</span>
+              <button onclick="copyToClipboard('matrixColProblema', this)" class="px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs transition shadow flex items-center gap-1.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                <span>Copiar Matriz Completa</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 5. RED DE LOS 12 AGENTES ESPECIALIZADOS -->
+  <!-- ========================================== -->
+  <section id="agentes" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+    <!-- Ambientación de fondo -->
+    <div class="absolute inset-0 pattern-grid opacity-10 pointer-events-none"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-gold-400 border border-gold-400/30 text-xs font-bold uppercase tracking-wider mb-3">
+          ⭐ Red Científica Multi-Agente
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black font-display">Los 12 Agentes al Servicio de tu Investigación</h2>
+        <p class="text-slate-400 mt-2 text-sm sm:text-base">
+          Estructura jerárquica con orquestación autónoma y auditoría cruzada con mandato resolutivo.
+        </p>
+      </div>
+
+      <!-- TARJETA DESTACADA: EL FISCALIZADOR SUPREMO -->
+      <div class="max-w-4xl mx-auto mb-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-navy-850 via-indigo-950 to-slate-900 border-2 border-gold-500/50 shadow-glow-gold relative overflow-hidden">
+        <div class="absolute top-0 right-0 transform translate-x-4 -translate-y-4 w-32 h-32 bg-gold-500/10 rounded-full blur-2xl"></div>
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold-400 to-amber-600 flex items-center justify-center text-3xl shadow-lg shadow-gold-500/30 shrink-0">
+            ⚖️
+          </div>
+          <div class="flex-1 text-center sm:text-left">
+            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-1">
+              <h3 class="text-xl font-black text-white font-display">quality-inspector</h3>
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black bg-gold-400 text-navy-950 uppercase tracking-wider">Fiscalizador y Auditor Supremo</span>
+            </div>
+            <p class="text-xs font-bold text-gold-300 mb-2">Protocolo de Cero Errores Metodológicos, Cero Alucinaciones y Corrección Directa</p>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Tiene mandato resolutivo prioritario sobre los otros 11 agentes. Ningún entregable, cálculo muestral, ecuación booleana o cita APA 7 se da por aprobado sin la validación exhaustiva y corrección directa de este fiscalizador.
+            </p>
+            <div class="mt-4 flex flex-wrap items-center justify-center sm:justify-start gap-3">
+              <span class="text-[11px] font-bold text-slate-400">Verificaciones:</span>
+              <span class="px-2 py-0.5 rounded bg-white/10 text-[11px] text-slate-200">1:1 Citas APA</span>
+              <span class="px-2 py-0.5 rounded bg-white/10 text-[11px] text-slate-200">No DOIs falsos</span>
+              <span class="px-2 py-0.5 rounded bg-white/10 text-[11px] text-slate-200">Validez Aiken &ge; 0.80</span>
+              <span class="px-2 py-0.5 rounded bg-white/10 text-[11px] text-slate-200">Anti-Ghostwriting</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cuadrícula de los otros 11 Agentes -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="agentGridContainer">
+        <!-- Inyectado dinámicamente para legibilidad y consistencia -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6. COTIZADOR INTELIGENTE Y AGENDAMIENTO -->
+  <!-- ========================================== -->
+  <section id="cotizador" class="py-20 bg-slate-50 border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-xs font-bold uppercase tracking-wider mb-3">
+          💳 Transparencia y Reserva Inmediata
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black text-navy-900 font-display">Cotizador en Tiempo Real y Agendamiento 1 a 1</h2>
+        <p class="text-slate-600 mt-2 text-sm sm:text-base">Calcula la inversión exacta de tu asesoría personalizada con doctores e investigadores verificados.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Cotizador Interactivo (Col 7) -->
+        <div class="lg:col-span-7 glass-panel p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-lg">
+          <h3 class="text-lg font-bold text-navy-900 mb-4 flex items-center gap-2">
+            <span>⚙️</span>
+            <span>Configura tu Paquete de Asesoría</span>
+          </h3>
+
+          <div class="space-y-5">
+            <!-- Nivel Académico -->
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-2">1. Selecciona tu Nivel Académico:</label>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <button type="button" onclick="setPriceLevel('pregrado', 120)" id="btnLevel-pregrado" class="level-btn p-3 rounded-xl border border-brand-500 bg-brand-50 text-brand-700 font-bold text-xs text-center transition">
+                  Pregrado
+                </button>
+                <button type="button" onclick="setPriceLevel('maestria', 190)" id="btnLevel-maestria" class="level-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold text-xs text-center hover:bg-slate-50 transition">
+                  Maestría
+                </button>
+                <button type="button" onclick="setPriceLevel('doctorado', 280)" id="btnLevel-doctorado" class="level-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold text-xs text-center hover:bg-slate-50 transition">
+                  Doctorado
+                </button>
+                <button type="button" onclick="setPriceLevel('articulo', 240)" id="btnLevel-articulo" class="level-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold text-xs text-center hover:bg-slate-50 transition">
+                  Artículo Scopus
+                </button>
+              </div>
+            </div>
+
+            <!-- Servicios Adicionales / Módulos -->
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-2">2. Servicios Requeridos (Selección Múltiple):</label>
+              <div class="space-y-2.5 text-xs font-semibold text-slate-700">
+                <label class="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200 cursor-pointer hover:bg-slate-50 transition">
+                  <span class="flex items-center gap-2.5">
+                    <input type="checkbox" id="srv-informe" checked onchange="calcTotalQuote()" class="rounded text-brand-600 focus:ring-brand-500">
+                    <span>Revisión de Informe y Auditoría APA 7.ª Ed.</span>
+                  </span>
+                  <span class="text-brand-600 font-bold">Incluido</span>
+                </label>
+                <label class="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200 cursor-pointer hover:bg-slate-50 transition">
+                  <span class="flex items-center gap-2.5">
+                    <input type="checkbox" id="srv-estadistica" onchange="calcTotalQuote()" class="rounded text-brand-600 focus:ring-brand-500">
+                    <span>Procesamiento Estadístico Avanzado (SPSS / R / Jamovi)</span>
+                  </span>
+                  <span class="text-slate-600 font-bold">+ $80 USD</span>
+                </label>
+                <label class="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200 cursor-pointer hover:bg-slate-50 transition">
+                  <span class="flex items-center gap-2.5">
+                    <input type="checkbox" id="srv-mentoria" checked onchange="calcTotalQuote()" class="rounded text-brand-600 focus:ring-brand-500">
+                    <span>Sesión Sincrónica 1 a 1 con Doctor Investigador (60 min)</span>
+                  </span>
+                  <span class="text-slate-600 font-bold">+ $50 USD</span>
+                </label>
+                <label class="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200 cursor-pointer hover:bg-slate-50 transition">
+                  <span class="flex items-center gap-2.5">
+                    <input type="checkbox" id="srv-defensa" onchange="calcTotalQuote()" class="rounded text-brand-600 focus:ring-brand-500">
+                    <span>Simulacro de Jurado de Sustentación con Rúbrica Crítica</span>
+                  </span>
+                  <span class="text-slate-600 font-bold">+ $60 USD</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Resumen de Cotización -->
+            <div class="p-5 rounded-2xl bg-slate-900 text-white flex items-center justify-between">
+              <div>
+                <span class="text-xs text-slate-400 font-medium uppercase">Inversión Estimada:</span>
+                <div class="text-3xl font-black font-display text-emerald-400" id="totalQuotePrice">$170 USD</div>
+                <div class="text-[11px] text-slate-300">Incluye dictamen del fiscalizador y garantía de 30 días.</div>
+              </div>
+              <button onclick="fillBookingFromQuote()" class="px-5 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs transition shadow-lg shadow-brand-500/30 flex items-center gap-2">
+                <span>Agendar con esta Cotización</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulario de Agendamiento con Calendario (Col 5) -->
+        <div class="lg:col-span-5 glass-panel p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-lg">
+          <h3 class="text-lg font-bold text-navy-900 mb-1 flex items-center gap-2">
+            <span>📅</span>
+            <span>Reserva de Cita Sincrónica</span>
+          </h3>
+          <p class="text-xs text-slate-500 mb-5">Elige fecha, horario y especialista para tu sesión de co-pilotaje.</p>
+
+          <form onsubmit="confirmBooking(event)" class="space-y-4 text-xs font-semibold">
+            <div>
+              <label class="block text-slate-700 mb-1">Nombre y Apellidos</label>
+              <input type="text" id="bookName" required class="w-full p-2.5 rounded-xl border border-slate-300 text-xs" placeholder="Ej. Carlos Mendoza">
+            </div>
+
+            <div>
+              <label class="block text-slate-700 mb-1">Correo Institucional / Académico</label>
+              <input type="email" id="bookEmail" required class="w-full p-2.5 rounded-xl border border-slate-300 text-xs" placeholder="cmendoza@universidad.edu">
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-slate-700 mb-1">Fecha de Sesión</label>
+                <input type="date" id="bookDate" required class="w-full p-2.5 rounded-xl border border-slate-300 text-xs font-medium bg-white">
+              </div>
+              <div>
+                <label class="block text-slate-700 mb-1">Horario (GMT-5)</label>
+                <select id="bookTime" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs font-medium bg-white">
+                  <option>09:00 - 10:00 AM</option>
+                  <option>11:00 - 12:00 PM</option>
+                  <option>03:00 - 04:00 PM</option>
+                  <option selected>06:00 - 07:00 PM</option>
+                  <option>08:00 - 09:00 PM</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-slate-700 mb-1">Especialista Metodólogo Deseado</label>
+              <select id="bookSpecialist" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs font-medium bg-white">
+                <option value="Dr. Jorge Morales">Dr. Jorge Morales (Metodología Cuantitativa & Ciencias Sociales)</option>
+                <option value="Dra. Elena Valdivia">Dra. Elena Valdivia (Revisora Scopus Q1 & Ciencias de la Salud)</option>
+                <option value="Mg. Roberto Thorne">Mg. Roberto Thorne (Psicometría, Aiken & Estadística SPSS/R)</option>
+                <option value="Dr. Andrés Salcedo">Dr. Andrés Salcedo (Sustentación & Argumentación Jurídica/Educativa)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-slate-700 mb-1">Tema o Enlace a Borrador (Opcional)</label>
+              <input type="text" id="bookTopic" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs" placeholder="Enlace Google Drive o título de la tesis">
+            </div>
+
+            <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-700 hover:to-indigo-700 text-white font-black text-xs uppercase tracking-wider transition shadow-lg shadow-brand-500/20">
+              Confirmar Cita y Generar Ticket
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 7. GARANTÍA ÉTICA Y POLÍTICA ANTI-GHOSTWRITING -->
+  <!-- ========================================== -->
+  <section id="etica" class="py-16 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="glass-panel p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-sm max-w-4xl mx-auto">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-xl">
+            🛡️
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-navy-900 font-display">Compromiso de Integridad y Ética Científica</h3>
+            <span class="text-xs text-slate-500">Política de Asesoría Auténtica y Cero Ghostwriting</span>
+          </div>
+        </div>
+
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          En <strong>AcademiaPro AI</strong> guiamos, auditamos y estructuramos las investigaciones respetando la autoría intelectual estricta del estudiante o científico. Jamás redactamos tesis completas por encargo (anti-fábrica de tesis) ni generamos referencias inventadas. Nuestro modelo capacita al tesista para que domine su investigación y defienda con solvencia ante el jurado calificador.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 pt-6 border-t border-slate-100 text-xs">
+          <div class="flex items-center gap-2 text-slate-700">
+            <span class="text-emerald-500 font-bold">✓</span>
+            <span>Fuentes Primarias Reales y DOIs Verificados</span>
+          </div>
+          <div class="flex items-center gap-2 text-slate-700">
+            <span class="text-emerald-500 font-bold">✓</span>
+            <span>Auditoría de Turnitin &lt; 10% Similitud</span>
+          </div>
+          <div class="flex items-center gap-2 text-slate-700">
+            <span class="text-emerald-500 font-bold">✓</span>
+            <span>Defensa Metodológica Incorruptible</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 8. FOOTER MODERNO INSTITUCIONAL -->
+  <!-- ========================================== -->
+  <footer class="bg-navy-950 text-slate-400 py-14 text-xs border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+        <div class="space-y-3">
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-lg bg-brand-600 text-white font-black flex items-center justify-center text-sm">AP</div>
+            <span class="text-base font-black text-white font-display">AcademiaPro AI</span>
+          </div>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Plataforma universitaria para la optimización de tesis y publicaciones científicas indexadas mediante agentes de IA y mentoría de doctores.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-3">Herramientas en Vivo</h4>
+          <ul class="space-y-2 text-slate-400">
+            <li><a href="#herramientas" onclick="selectToolTab('apa')" class="hover:text-white transition">Validador APA 7.ª Edición</a></li>
+            <li><a href="#herramientas" onclick="selectToolTab('booleano')" class="hover:text-white transition">Constructor Scopus / WoS</a></li>
+            <li><a href="#herramientas" onclick="selectToolTab('revistas')" class="hover:text-white transition">Comparador Cuartiles Q1-Q4</a></li>
+            <li><a href="#herramientas" onclick="selectToolTab('psicometria')" class="hover:text-white transition">Calculadora V de Aiken & Muestra</a></li>
+            <li><a href="#herramientas" onclick="selectToolTab('matriz')" class="hover:text-white transition">Matriz de Consistencia Rápida</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-3">Perfiles Académicos</h4>
+          <ul class="space-y-2 text-slate-400">
+            <li><a href="#perfiles" onclick="setProfile('pregrado')" class="hover:text-white transition">Tesistas de Pregrado / Licenciatura</a></li>
+            <li><a href="#perfiles" onclick="setProfile('posgrado')" class="hover:text-white transition">Maestría y Doctorado (PhD)</a></li>
+            <li><a href="#perfiles" onclick="setProfile('investigador')" class="hover:text-white transition">Docentes e Investigadores Scopus</a></li>
+            <li><a href="#cotizador" class="hover:text-white transition">Simulacro de Jurado de Tesis</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-3">Integridad Científica</h4>
+          <p class="text-slate-400 text-xs mb-3">Auditoría cruzada permanente por el Agente Fiscalizador Supremo.</p>
+          <div class="p-3 rounded-xl bg-navy-900 border border-slate-800 text-[11px] text-emerald-400 font-mono">
+            STATUS: 100% OPERATIONAL<br>
+            QUALITY-INSPECTOR: ACTIVE
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500">
+        <p>© 2026 AcademiaPro AI. Todos los derechos reservados. Diseñado para altos estándares científicos.</p>
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-slate-300 transition">Términos Éticos</a>
+          <a href="#" class="hover:text-slate-300 transition">Política Anti-Plagio</a>
+          <a href="#" class="hover:text-slate-300 transition">Seguridad de Datos</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- MODAL / WIDGET DE CHAT DEL COORDINADOR -->
+  <!-- ========================================== -->
+  <div id="chatAdvisorModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-4">
+    <div class="bg-white w-full max-w-lg rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[85vh]">
+      <!-- Encabezado del chat -->
+      <div class="bg-navy-950 text-white p-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-brand-500 flex items-center justify-center font-bold text-sm">
+            🤖
+          </div>
+          <div>
+            <h4 class="text-sm font-bold">academic-consultant</h4>
+            <span class="text-[10px] text-emerald-400 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              Coordinador General Activo
+            </span>
+          </div>
+        </div>
+        <button onclick="closeChatAdvisor()" class="text-slate-400 hover:text-white p-1 rounded-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Historial de mensajes -->
+      <div id="chatHistory" class="p-4 overflow-y-auto space-y-3 bg-slate-50 flex-1 text-xs">
+        <div class="flex gap-2">
+          <div class="w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center text-[10px] shrink-0 font-bold">AP</div>
+          <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 text-slate-800 shadow-sm max-w-[85%]">
+            ¡Hola! Soy el <strong>Coordinador Académico</strong>. ¿En qué fase de tu investigación te encuentras hoy? Puedo orientarte sobre metodología, formato APA 7 o canalizar tu caso con uno de los 11 agentes especialistas.
+          </div>
+        </div>
+      </div>
+
+      <!-- Preguntas sugeridas -->
+      <div class="p-2.5 bg-slate-100 border-t border-slate-200 flex flex-wrap gap-1.5 text-[11px]">
+        <button onclick="sendChatMessage('¿Cómo redacto mi planteamiento del problema?')" class="px-2.5 py-1 rounded-full bg-white border border-slate-300 hover:bg-slate-50 text-slate-700">
+          ¿Cómo redactar el problema?
+        </button>
+        <button onclick="sendChatMessage('¿Qué diferencia hay entre cita narrativa y parentética en APA 7?')" class="px-2.5 py-1 rounded-full bg-white border border-slate-300 hover:bg-slate-50 text-slate-700">
+          Cita narrativa vs parentética
+        </button>
+        <button onclick="sendChatMessage('¿Cómo calcular el tamaño de muestra finita?')" class="px-2.5 py-1 rounded-full bg-white border border-slate-300 hover:bg-slate-50 text-slate-700">
+          Cálculo muestral
+        </button>
+      </div>
+
+      <!-- Entrada de texto -->
+      <form onsubmit="handleChatSubmit(event)" class="p-3 bg-white border-t border-slate-200 flex gap-2">
+        <input type="text" id="chatInput" placeholder="Escribe tu consulta metodológica..." class="flex-1 p-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-brand-500 focus:outline-none">
+        <button type="submit" class="px-4 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition">
+          Enviar
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL DE TICKET / COMPROBANTE DE CITA -->
+  <!-- ========================================== -->
+  <div id="bookingTicketModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-slate-200 p-6 sm:p-8 text-center relative overflow-hidden">
+      <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mx-auto mb-4">
+        ✓
+      </div>
+      <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-black uppercase tracking-wider">
+        Pase de Asesoría Confirmado
+      </span>
+      <h3 class="text-xl font-black text-navy-900 font-display mt-3">¡Cita Sincronizada con Éxito!</h3>
+      <p class="text-xs text-slate-500 mt-1">El diagnóstico preliminar y enlace seguro de videollamada han sido reservados.</p>
+
+      <div class="mt-6 p-4 rounded-2xl bg-slate-50 border border-slate-200 text-left text-xs space-y-2">
+        <div class="flex justify-between">
+          <span class="text-slate-500">Investigador:</span>
+          <span class="font-bold text-navy-900" id="ticketName">-</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">Especialista Asignado:</span>
+          <span class="font-bold text-brand-600" id="ticketSpecialist">-</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">Fecha & Hora:</span>
+          <span class="font-bold text-slate-800" id="ticketDateTime">-</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">Inversión Estimada:</span>
+          <span class="font-bold text-emerald-600" id="ticketPrice">-</span>
+        </div>
+        <div class="pt-2 border-t border-slate-200 flex justify-between text-[11px]">
+          <span class="text-slate-400">Código de Ticket:</span>
+          <span class="font-mono font-bold text-slate-700" id="ticketCode">AP-2026-8842</span>
+        </div>
+      </div>
+
+      <div class="mt-6 flex gap-3">
+        <button onclick="downloadTicketMock()" class="flex-1 py-2.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-white font-bold text-xs transition">
+          Descargar Resumen
+        </button>
+        <button onclick="closeBookingModal()" class="flex-1 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs transition">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- ========================================== -->
+  <!-- 9. LÓGICA JAVASCRIPT COMPLETA E INTERACTIVA -->
+  <!-- ========================================== -->
+  <script>
+    // --- ESTADO GLOBAL DE LA APLICACIÓN ---
+    const appState = {
+      profile: 'pregrado',
+      basePrice: 120,
+      activeTool: 'apa',
+      tasks: [
+        { id: 1, title: 'Planteamiento y Delimitación del Problema', milestone: 1, done: true, status: 'Completado' },
+        { id: 2, title: 'Matriz de Consistencia Metodológica', milestone: 1, done: true, status: 'Completado' },
+        { id: 3, title: 'Marco Teórico & Antecedentes en Scopus', milestone: 2, done: true, status: 'Completado' },
+        { id: 4, title: 'Validez de Instrumento (V de Aiken)', milestone: 3, done: true, status: 'Completado' },
+        { id: 5, title: 'Recolección y Muestreo de Campo', milestone: 4, done: false, status: 'En Revisión' },
+        { id: 6, title: 'Análisis Estadístico e Interpretación APA 7', milestone: 5, done: false, status: 'Pendiente' },
+        { id: 7, title: 'Simulación de Jurado y Diapositivas', milestone: 6, done: false, status: 'Pendiente' },
+      ],
+      journals: [
+        { name: "Comunicar: Journal of Media Education", iss: "1134-3478", area: "Ciencias Sociales / Educación", q: "Q1", sjr: "2.41", index: "Scopus, WoS, SciELO", decision: "4 semanas", apc: "FREE", publisher: "Grupo Comunicar" },
+        { name: "Computers & Education", iss: "0360-1315", area: "Tecnología / Educación", q: "Q1", sjr: "3.85", index: "Scopus, WoS", decision: "6 semanas", apc: "APC", publisher: "Elsevier" },
+        { name: "Revista Latinoamericana de Psicología", iss: "0120-0534", area: "Psicología & Salud", q: "Q2", sjr: "0.58", index: "Scopus, SciELO", decision: "8 semanas", apc: "FREE", publisher: "Fundación Konrad Lorenz" },
+        { name: "Frontiers in Education", iss: "2504-284X", area: "Educación & Métodos", q: "Q2", sjr: "0.82", index: "Scopus, WoS", decision: "5 semanas", apc: "APC", publisher: "Frontiers Media" },
+        { name: "Educación Médica", iss: "1575-1813", area: "Salud & Educación Médica", q: "Q3", sjr: "0.34", index: "Scopus, SciELO", decision: "7 semanas", apc: "FREE", publisher: "Elsevier España" },
+        { name: "Retos: Nuevas Tendencias en Educación Física", iss: "1579-1726", area: "Ciencias del Deporte", q: "Q3", sjr: "0.41", index: "Scopus, WoS (ESCI)", decision: "4 semanas", apc: "APC", publisher: "FEADEF" },
+        { name: "Revista Complutense de Educación", iss: "1130-2496", area: "Educación", q: "Q4", sjr: "0.29", index: "Scopus, SciELO", decision: "10 semanas", apc: "FREE", publisher: "Univ. Complutense" },
+        { name: "Información Tecnológica", iss: "0718-0764", area: "Ingeniería / Tecnología", q: "Q4", sjr: "0.26", index: "Scopus, SciELO", decision: "6 semanas", apc: "APC", publisher: "CIT Chile" }
+      ],
+      agents: [
+        { id: "scientific-researcher", icon: "🔍", name: "scientific-researcher", role: "Búsqueda Sistemática & PRISMA", desc: "Formula ecuaciones booleanas en Scopus/WoS/PubMed y gestiona cribados bibliográficos libres de sesgo." },
+        { id: "thesis-advisor", icon: "📐", name: "thesis-advisor", role: "Metodología & Consistencia", desc: "Verifica congruencia entre problema, objetivos, hipótesis y diseño metodológico no experimental o experimental." },
+        { id: "apa7-specialist", icon: "✒️", name: "apa7-specialist", role: "Normativa APA 7.ª Edición", desc: "Asegura correspondencia 1:1 entre citas y referencias, formato de tablas y jerarquías de títulos." },
+        { id: "results-interpreter", icon: "📊", name: "results-interpreter", role: "Análisis Estadístico y Cualitativo", desc: "Traduce corridas de SPSS, R y Jamovi a redacción científica con valores p y tamaños de efecto d de Cohen." },
+        { id: "instrument-validator", icon: "📏", name: "instrument-validator", role: "Psicometría & Muestreo", desc: "Calcula V de Aiken para juicio de expertos, Alfa de Cronbach, Omega y tamaño óptimo de muestra." },
+        { id: "journal-matcher", icon: "🎯", name: "journal-matcher", role: "Selección de Revistas Scopus/WoS", desc: "Compara cuartiles (Q1-Q4), políticas editoriales, tasas de aceptación y filtra revistas depredadoras." },
+        { id: "plagiarism-integrity-auditor", icon: "🛡️", name: "plagiarism-integrity-auditor", role: "Integridad & Parafraseo Ético", desc: "Fiscaliza porcentaje de similitud en Turnitin y promueve la síntesis conceptual original sin alteración." },
+        { id: "peer-review-strategist", icon: "📬", name: "peer-review-strategist", role: "Respuesta a Revisores", desc: "Redacta cartas de respuesta punto por punto (Response to Reviewers) con diplomacia y sustento metodológico." },
+        { id: "defense-coach", icon: "🎓", name: "defense-coach", role: "Entrenamiento de Sustentación", desc: "Simula preguntas capciosas de jurados de tesis, prepara diapositivas sintéticas y oratoria científica." },
+        { id: "academic-consultant", icon: "🤝", name: "academic-consultant", role: "Orquestador & Diagnóstico", desc: "Analiza el requerimiento inicial del investigador y activa los subagentes idóneos en cada fase." },
+        { id: "web-platform-designer", icon: "💻", name: "web-platform-designer", role: "Arquitectura UX/UI Científica", desc: "Garantiza entornos web accesibles, interactivos y con estándares WCAG 2.1 AA para investigadores." }
+      ]
+    };
+
+    // --- 1. GESTIÓN DE PERFILES DINÁMICOS ---
+    function setProfile(profileKey) {
+      appState.profile = profileKey;
+      
+      // Actualizar botones
+      document.querySelectorAll('.profile-btn').forEach(btn => {
+        btn.className = "profile-btn py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all text-slate-300 hover:text-white hover:bg-white/5";
+      });
+      const activeBtn = document.getElementById('profile-' + profileKey);
+      if (activeBtn) {
+        activeBtn.className = "profile-btn py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all bg-brand-600 text-white shadow-md";
+      }
+
+      const badge = document.getElementById('heroBadge');
+      const title = document.getElementById('heroTitle');
+      const desc = document.getElementById('heroDesc');
+
+      if (profileKey === 'pregrado') {
+        badge.innerText = "Acompañamiento Integral de Tesis de Licenciatura";
+        title.innerHTML = 'Estructura tu Tesis sin Estrés con <span class="bg-gradient-to-r from-brand-400 via-indigo-300 to-emerald-400 bg-clip-text text-transparent">Metodología Rigurosa y APA 7 Impecable</span>';
+        desc.innerText = "Guía paso a paso desde el planteamiento del problema hasta la simulación del jurado de sustentación. Auditoría instantánea con 12 agentes de IA y mentoría sincrónica de doctores investigadores.";
+        setPriceLevel('pregrado', 120);
+      } else if (profileKey === 'posgrado') {
+        badge.innerText = "Profundidad Epistémica para Maestría y Doctorado (PhD)";
+        title.innerHTML = 'Eleva tu Tesis de Posgrado con <span class="bg-gradient-to-r from-purple-400 via-indigo-300 to-emerald-400 bg-clip-text text-transparent">Modelado Estadístico y Discusión Crítica</span>';
+        desc.innerText = "Rigor metodológico exigente: validación psicométrica avanzada, pruebas de hipótesis no paramétricas y contrastación teórica de alto nivel supervisada por el fiscalizador supremo.";
+        setPriceLevel('maestria', 190);
+      } else {
+        badge.innerText = "Aceleración Editorial para Docentes e Investigadores";
+        title.innerHTML = 'Publica en Revistas Scopus / WoS con <span class="bg-gradient-to-r from-gold-400 via-brand-300 to-emerald-400 bg-clip-text text-transparent">Revisión por Pares y Ecuaciones PRISMA</span>';
+        desc.innerText = "Búsquedas booleanas exhaustivas, selección de revistas Q1/Q2 sin APC predatorio y preparación integral de cartas de respuesta (rebuttal letters) a revisores de revistas indexadas.";
+        setPriceLevel('articulo', 240);
+      }
+
+      showToast(`Perfil cambiado a: ${profileKey.toUpperCase()}`, 'info');
+    }
+
+    // --- 2. GESTIÓN DEL DASHBOARD Y PROGRESO ---
+    const milestoneNames = [
+      "1. Problema", "2. Marco Teórico", "3. Metodología", 
+      "4. Trabajo Campo", "5. Resultados", "6. APA & Discusión", "7. Sustentación"
+    ];
+
+    function renderMilestones() {
+      const container = document.getElementById('milestonesContainer');
+      container.innerHTML = '';
+      
+      const totalTasks = appState.tasks.length;
+      const doneTasks = appState.tasks.filter(t => t.done).length;
+      const currentPct = Math.round((doneTasks / totalTasks) * 100);
+
+      document.getElementById('progressPercentage').innerText = `${currentPct}%`;
+      document.getElementById('mainProgressBar').style.width = `${currentPct}%`;
+      document.getElementById('completedCounter').innerText = `${doneTasks} / ${totalTasks} Completados`;
+
+      milestoneNames.forEach((name, idx) => {
+        const stepNum = idx + 1;
+        const tasksForStep = appState.tasks.filter(t => t.milestone === stepNum);
+        const allDone = tasksForStep.length > 0 && tasksForStep.every(t => t.done);
+        const someDone = tasksForStep.some(t => t.done);
+
+        let statusClass = "bg-slate-100 text-slate-500 border-slate-200";
+        let statusIcon = "○";
+        if (allDone) {
+          statusClass = "bg-emerald-50 text-emerald-700 border-emerald-300 font-bold shadow-sm";
+          statusIcon = "✓";
+        } else if (someDone) {
+          statusClass = "bg-amber-50 text-amber-700 border-amber-300 font-bold";
+          statusIcon = "◐";
+        }
+
+        const div = document.createElement('div');
+        div.className = `p-2.5 rounded-xl border text-center transition cursor-pointer hover:scale-102 ${statusClass}`;
+        div.innerHTML = `
+          <div class="text-[10px] uppercase font-bold tracking-wider">${statusIcon} Hito ${stepNum}</div>
+          <div class="text-xs font-semibold truncate mt-0.5">${name.split('. ')[1]}</div>
+        `;
+        div.onclick = () => toggleMilestoneTasks(stepNum);
+        container.appendChild(div);
+      });
+
+      renderChecklist();
+    }
+
+    function renderChecklist() {
+      const list = document.getElementById('checklistTasks');
+      list.innerHTML = '';
+
+      appState.tasks.forEach(task => {
+        const item = document.createElement('div');
+        item.className = `p-3 rounded-xl border flex items-center justify-between transition ${
+          task.done ? 'bg-emerald-50/50 border-emerald-200 text-slate-800' : 'bg-white border-slate-200 text-slate-600'
+        }`;
+
+        let statusBadge = task.done 
+          ? '<span class="px-2 py-0.5 rounded text-[10px] font-black bg-emerald-100 text-emerald-800">Completado</span>'
+          : '<span class="px-2 py-0.5 rounded text-[10px] font-black bg-amber-100 text-amber-800">En Revisión</span>';
+
+        item.innerHTML = `
+          <div class="flex items-center gap-3">
+            <input type="checkbox" ${task.done ? 'checked' : ''} onchange="toggleTask(${task.id})" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500 cursor-pointer">
+            <div>
+              <span class="text-xs font-bold ${task.done ? 'line-through text-slate-400' : 'text-slate-800'}">${task.title}</span>
+              <span class="block text-[10px] text-slate-400">Hito ${task.milestone}: ${milestoneNames[task.milestone - 1]}</span>
+            </div>
+          </div>
+          <div>${statusBadge}</div>
+        `;
+        list.appendChild(item);
+      });
+    }
+
+    function toggleTask(id) {
+      const task = appState.tasks.find(t => t.id === id);
+      if (task) {
+        task.done = !task.done;
+        renderMilestones();
+        showToast(task.done ? "Hito actualizado: Completado" : "Hito marcado como pendiente", "info");
+      }
+    }
+
+    function toggleMilestoneTasks(milestoneNum) {
+      const tasks = appState.tasks.filter(t => t.milestone === milestoneNum);
+      const shouldComplete = tasks.some(t => !t.done);
+      tasks.forEach(t => t.done = shouldComplete);
+      renderMilestones();
+      showToast(`Hito ${milestoneNum} actualizado`, 'info');
+    }
+
+    function resetDashboard() {
+      appState.tasks.forEach((t, i) => t.done = i < 3);
+      renderMilestones();
+      showToast("Hitos reestablecidos al estado inicial", "info");
+    }
+
+    function simulateFullThesis() {
+      appState.tasks.forEach(t => t.done = true);
+      renderMilestones();
+      showToast("¡Felicidades! Tesis simulada al 100% de cumplimiento", "success");
+    }
+
+    function triggerQualityAudit() {
+      showToast("Ejecutando auditoría cruzada...", "info");
+      setTimeout(() => {
+        alert("DICTAMEN DEL FISCALIZADOR SUPREMO (quality-inspector):\n\n✓ Matriz Metodológica: 100% Coherente.\n✓ Citas APA 7: Cero citas huérfanas detectadas.\n✓ Confiabilidad Psicométrica: V de Aiken = 0.93.\n✓ Veredicto: Manuscrito apto para sustentación oral sin observaciones de forma ni fondo.");
+      }, 500);
+    }
+
+    // --- 3. SUITE INTERACTIVA DE 5 HERRAMIENTAS ---
+    function selectToolTab(toolKey) {
+      appState.activeTool = toolKey;
+
+      ['apa', 'booleano', 'revistas', 'psicometria', 'matriz'].forEach(key => {
+        const view = document.getElementById('toolView-' + key);
+        const btn = document.getElementById('tabBtn-' + key);
+        if (view) view.classList.add('hidden');
+        if (btn) btn.className = "tool-tab flex-1 min-w-[140px] py-3 px-3 rounded-xl text-slate-600 hover:text-navy-900 transition";
+      });
+
+      const activeView = document.getElementById('toolView-' + toolKey);
+      const activeBtn = document.getElementById('tabBtn-' + toolKey);
+      if (activeView) activeView.classList.remove('hidden');
+      if (activeBtn) activeBtn.className = "tool-tab flex-1 min-w-[140px] py-3 px-3 rounded-xl bg-white text-brand-600 shadow-sm transition";
+
+      if (toolKey === 'booleano') buildBooleanEquation();
+      if (toolKey === 'revistas') filterJournals();
+      if (toolKey === 'psicometria') {
+        calcSampleAdvanced();
+        renderAikenJudgesInputs();
+      }
+      if (toolKey === 'matriz') generateMatrixInRealtime();
+    }
+
+    // MÓDULO 1: APA 7
+    function loadSampleAPAErrors() {
+      document.getElementById('apaTextInput').value = 
+`Según Gómez, Morales, Rojas y Delgado (2020), la inteligencia artificial generativa transforma la educación superior. Además, investigaciones previas demuestran que "el autoaprendizaje acelera la retención conceptual" (Sánchez, 2019, p.45).
+
+Referencias:
+Gómez, J., Morales, M., Rojas, F., & Delgado, E. (2020). Inteligencia artificial en universidades. Editorial Trillas. México D.F.
+Sánchez, L. (2019). Aprendizaje digital en el siglo XXI. Revista de Educación, 15(2), 34-50. doi:10.1016/j.edu.2019.04.002`;
+      showToast("Texto de muestra con errores cargado", "info");
+    }
+
+    function loadSampleAPACorrect() {
+      document.getElementById('apaTextInput').value = 
+`De acuerdo con Gómez et al. (2020), la inteligencia artificial generativa transforma la educación superior.
+
+Referencias:
+Gómez, J., Morales, M., Rojas, F., & Delgado, E. (2020). Inteligencia artificial en universidades. Editorial Trillas. https://doi.org/10.1016/j.trillas.2020.01.002`;
+      showToast("Texto correcto cargado", "info");
+    }
+
+    function executeAPAAudit() {
+      const rawText = document.getElementById('apaTextInput').value;
+      if (!rawText.trim()) {
+        alert("Por favor ingresa un fragmento de texto o referencias bibliográficas.");
+        return;
+      }
+
+      const issues = [];
+      let corrected = rawText;
+
+      // Detección 1: Regla et al. para 3 o más autores en citas en el texto
+      if (/([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+),\s+([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+),\s+([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)/.test(rawText)) {
+        issues.push("<strong>Falla en regla de autores (APA 7):</strong> En citas en el texto con 3 o más autores, APA 7 prohíbe listar todos los apellidos desde la primera mención. Debe abreviarse como 'PrimerAutor et al. (Año)'.");
+        corrected = corrected.replace(/Gómez,\s+Morales,\s+Rojas\s+y\s+Delgado\s+\(2020\)/g, "Gómez et al. (2020)");
+      }
+
+      // Detección 2: Ciudad de editorial eliminada en APA 7
+      if (/México\s+D\.?F\.?|Bogotá|Madrid|Buenos\s+Aires/i.test(rawText)) {
+        issues.push("<strong>Falla en libro de referencia (APA 7):</strong> La 7.ª edición suprime la ciudad/país de la casa editorial. Solo debe colocarse el nombre de la editorial.");
+        corrected = corrected.replace(/\.\s+México\s+D\.?F\.?/gi, "");
+      }
+
+      // Detección 3: Formato DOI antiguo vs nuevo
+      if (/doi:\s*10\./i.test(rawText)) {
+        issues.push("<strong>Falla en hipervínculo DOI (APA 7):</strong> Los DOIs ya no se preceden con 'doi:'. Deben formularse como enlace URL estándar activo: 'https://doi.org/10.xxxx'.");
+        corrected = corrected.replace(/doi:\s*(10\.[^\s]+)/gi, "https://doi.org/$1");
+      }
+
+      // Si no detectó fallas específicas predefinidas, ofrecer auditoría general
+      if (issues.length === 0) {
+        issues.push("<strong>Revisión General Aprobada:</strong> No se detectaron violaciones manifiestas en la estructura formal analizada. Correspondencia autor-año válida.");
+      }
+
+      const issuesList = document.getElementById('apaAuditIssuesList');
+      issuesList.innerHTML = issues.map(iss => `<li>${iss}</li>`).join('');
+
+      document.getElementById('apaOutputText').innerText = corrected;
+      document.getElementById('apaAuditResult').classList.remove('hidden');
+      showToast("Auditoría APA 7 finalizada con éxito", "success");
+    }
+
+    // MÓDULO 2: BOOLEANO
+    function buildBooleanEquation() {
+      const db = document.getElementById('dbSelector').value;
+      const rawP = document.getElementById('boolTermP').value.split(',').map(s => s.trim()).filter(Boolean);
+      const rawI = document.getElementById('boolTermI').value.split(',').map(s => s.trim()).filter(Boolean);
+      const rawC = document.getElementById('boolTermC').value.split(',').map(s => s.trim()).filter(Boolean);
+      const rawNot = document.getElementById('boolTermNot').value.split(',').map(s => s.trim()).filter(Boolean);
+
+      const useQuotes = document.getElementById('boolQuotes').checked;
+      const useWildcard = document.getElementById('boolWildcard').checked;
+
+      const formatTerm = (term) => {
+        let t = term;
+        if (useWildcard && !t.includes('*') && !t.includes(' ')) {
+          t = t + '*';
+        }
+        return (useQuotes && t.includes(' ')) ? `"${t}"` : (t.includes(' ') ? `"${t}"` : t);
+      };
+
+      const groupP = rawP.map(formatTerm).join(' OR ');
+      const groupI = rawI.map(formatTerm).join(' OR ');
+      const groupC = rawC.map(formatTerm).join(' OR ');
+      const groupNot = rawNot.map(formatTerm).join(' OR ');
+
+      let query = "";
+      if (db === 'scopus') {
+        query = `TITLE-ABS-KEY ( ( ${groupP} ) AND ( ${groupI} ) AND ( ${groupC} ) )`;
+        if (groupNot) query += ` AND NOT TITLE-ABS-KEY ( ${groupNot} )`;
+      } else if (db === 'wos') {
+        query = `TS=( ( ${groupP} ) AND ( ${groupI} ) AND ( ${groupC} ) )`;
+        if (groupNot) query += ` NOT TS=( ${groupNot} )`;
+      } else if (db === 'pubmed') {
+        query = `( (${groupP}[Title/Abstract]) AND (${groupI}[Title/Abstract]) AND (${groupC}[Title/Abstract]) )`;
+        if (groupNot) query += ` NOT (${groupNot}[Title/Abstract])`;
+      }
+
+      document.getElementById('booleanOutputQuery').innerText = query;
+    }
+
+    // MÓDULO 3: REVISTAS
+    function filterJournals() {
+      const query = document.getElementById('journalSearchInput').value.toLowerCase();
+      const qFilter = document.getElementById('journalQuartileFilter').value;
+      const apcFilter = document.getElementById('journalApcFilter').value;
+
+      const tbody = document.getElementById('journalsTableBody');
+      tbody.innerHTML = '';
+
+      const filtered = appState.journals.filter(j => {
+        const matchesQuery = j.name.toLowerCase().includes(query) || j.area.toLowerCase().includes(query) || j.iss.includes(query) || j.q.toLowerCase().includes(query);
+        const matchesQ = qFilter === 'ALL' || j.q === qFilter;
+        const matchesApc = apcFilter === 'ALL' || j.apc === apcFilter;
+        return matchesQuery && matchesQ && matchesApc;
+      });
+
+      filtered.forEach(j => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-50 transition";
+
+        let qBadge = "bg-emerald-100 text-emerald-800";
+        if (j.q === 'Q2') qBadge = "bg-blue-100 text-blue-800";
+        if (j.q === 'Q3') qBadge = "bg-amber-100 text-amber-800";
+        if (j.q === 'Q4') qBadge = "bg-slate-200 text-slate-800";
+
+        let apcBadge = j.apc === 'FREE' 
+          ? '<span class="px-2 py-0.5 rounded font-black text-[10px] bg-emerald-100 text-emerald-700">Sin Costo (Diamante)</span>'
+          : '<span class="px-2 py-0.5 rounded font-black text-[10px] bg-indigo-100 text-indigo-700">Con APC</span>';
+
+        tr.innerHTML = `
+          <td class="p-3.5">
+            <div class="font-bold text-navy-900">${j.name}</div>
+            <div class="text-[11px] text-slate-400">ISSN: ${j.iss} | ${j.publisher}</div>
+          </td>
+          <td class="p-3.5 text-slate-600">${j.area}</td>
+          <td class="p-3.5">
+            <span class="px-2 py-0.5 rounded text-[10px] font-black ${qBadge}">${j.q}</span>
+            <span class="block text-[11px] text-slate-500 mt-0.5 font-mono">SJR: ${j.sjr}</span>
+          </td>
+          <td class="p-3.5 text-slate-600 font-medium">${j.index}</td>
+          <td class="p-3.5 text-slate-600">${j.decision}</td>
+          <td class="p-3.5">${apcBadge}</td>
+          <td class="p-3.5 text-center">
+            <button onclick="targetJournal('${j.name}')" class="px-2.5 py-1 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold text-[11px] transition">
+              Auditar Guía
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById('journalCountNotice').innerText = `Mostrando ${filtered.length} revistas científicas verificadas`;
+    }
+
+    function targetJournal(journalName) {
+      alert(`DIAGNÓSTICO EDITORIAL DE ${journalName.toUpperCase()}:\n\n✓ Indexación Scopus/WoS comprobada en Scimago 2026.\n✓ Cumple directrices éticas COPE (Committee on Publication Ethics).\n✓ Se recomienda estructurar el artículo con formato IMRyD y referencias en APA 7.`);
+    }
+
+    // MÓDULO 4: PSICOMETRÍA Y MUESTREO
+    function togglePsicoSubTab(sub) {
+      document.getElementById('psico-muestral-view').classList.toggle('hidden', sub !== 'muestral');
+      document.getElementById('psico-aiken-view').classList.toggle('hidden', sub !== 'aiken');
+
+      document.getElementById('subtab-muestral').className = sub === 'muestral' 
+        ? "px-3 py-1.5 rounded-lg bg-white text-purple-700 shadow-sm"
+        : "px-3 py-1.5 rounded-lg text-slate-600 hover:text-navy-900";
+      
+      document.getElementById('subtab-aiken').className = sub === 'aiken' 
+        ? "px-3 py-1.5 rounded-lg bg-white text-purple-700 shadow-sm"
+        : "px-3 py-1.5 rounded-lg text-slate-600 hover:text-navy-900";
+    }
+
+    function calcSampleAdvanced() {
+      const type = document.getElementById('sampleType').value;
+      const wrapper = document.getElementById('popFieldWrapper');
+      wrapper.style.display = type === 'finita' ? 'block' : 'none';
+
+      const N = parseFloat(document.getElementById('advPopN').value) || 1000;
+      const e = (parseFloat(document.getElementById('advMargin').value) || 5) / 100;
+      const Z = parseFloat(document.getElementById('advConfZ').value) || 1.96;
+      const p = 0.5, q = 0.5;
+
+      let n = 0;
+      if (type === 'finita') {
+        const num = N * Math.pow(Z, 2) * p * q;
+        const den = ((N - 1) * Math.pow(e, 2)) + (Math.pow(Z, 2) * p * q);
+        n = Math.ceil(num / den);
+      } else {
+        n = Math.ceil((Math.pow(Z, 2) * p * q) / Math.pow(e, 2));
+      }
+
+      document.getElementById('advSampleResult').innerText = `${n} participantes`;
+    }
+
+    function copySampleJustification() {
+      const nText = document.getElementById('advSampleResult').innerText;
+      const text = `Para determinar el tamaño representativo de la muestra se empleó el muestreo probabilístico con un nivel de confianza del 95% (Z = 1.96), un margen de error del 5% y máxima varianza (p = q = 0.50), obteniéndose un tamaño muestral mínimo de ${nText}.`;
+      navigator.clipboard.writeText(text);
+      showToast("Justificación metodológica copiada al portapapeles", "success");
+    }
+
+    // AIKEN
+    function renderAikenJudgesInputs() {
+      const numJudges = parseInt(document.getElementById('aikenJudgesCount').value) || 5;
+      const container = document.getElementById('aikenInputsContainer');
+      container.innerHTML = '';
+
+      for (let i = 1; i <= numJudges; i++) {
+        const div = document.createElement('div');
+        div.innerHTML = `
+          <label class="block text-[11px] font-bold text-slate-600 mb-1">Juez ${i}:</label>
+          <input type="number" min="1" max="5" value="5" oninput="calculateAiken()" class="aiken-val w-full p-2 rounded-lg border border-slate-300 text-xs text-center font-bold">
+        `;
+        container.appendChild(div);
+      }
+      calculateAiken();
+    }
+
+    function calculateAiken() {
+      const inputs = document.querySelectorAll('.aiken-val');
+      const n = inputs.length;
+      const c = parseFloat(document.getElementById('aikenScaleMax').value) || 5;
+      
+      let S = 0;
+      inputs.forEach(inp => {
+        let val = parseFloat(inp.value) || 1;
+        if (val > c) val = c;
+        if (val < 1) val = 1;
+        S += (val - 1);
+      });
+
+      const V = S / (n * (c - 1));
+      const roundedV = Math.round(V * 100) / 100;
+
+      document.getElementById('aikenResultValue').innerText = `V = ${roundedV.toFixed(2)}`;
+
+      const verdict = document.getElementById('aikenVerdictText');
+      if (roundedV >= 0.80) {
+        verdict.innerHTML = `<span class="text-emerald-400 font-bold">✓ Veredicto: Validez de contenido excelente y estadísticamente significativa (V ≥ 0.80). Reactivo admitido sin modificaciones.</span>`;
+      } else if (roundedV >= 0.70) {
+        verdict.innerHTML = `<span class="text-amber-400 font-bold">⚠️ Veredicto: Validez moderada. Se aconseja reformular redacción del reactivo.</span>`;
+      } else {
+        verdict.innerHTML = `<span class="text-red-400 font-bold">❌ Veredicto: Validez insuficiente. El ítem debe ser descartado o reestructurado en su totalidad.</span>`;
+      }
+    }
+
+    function generateAikenCertificate() {
+      alert("FICHA DE VALIDACIÓN DE INSTRUMENTO (V DE AIKEN):\n\n• Reactivo Evaluado: Pertinencia, Relevancia y Claridad.\n• Coeficiente V: " + document.getElementById('aikenResultValue').innerText + "\n• Dictamen: Aprobado por juicio de expertos para inclusión en instrumento de recolección de tesis.");
+    }
+
+    // MÓDULO 5: MATRIZ DE CONSISTENCIA
+    function generateMatrixInRealtime() {
+      const v1 = document.getElementById('matrizV1').value.trim() || "Variable 1";
+      const v2 = document.getElementById('matrizV2').value.trim() || "Variable 2";
+      const pob = document.getElementById('matrizPoblacion').value.trim() || "la población seleccionada";
+      const ctx = document.getElementById('matrizContexto').value.trim() || "2026";
+
+      document.getElementById('matrixColProblema').innerText = 
+        `¿De qué manera ${v1.toLowerCase()} se relaciona con ${v2.toLowerCase()} en ${pob.toLowerCase()}, ${ctx}?`;
+
+      document.getElementById('matrixColObjetivo').innerText = 
+        `Determinar la relación entre ${v1.toLowerCase()} y ${v2.toLowerCase()} en ${pob.toLowerCase()}, ${ctx}.`;
+
+      document.getElementById('matrixColHipotesis').innerText = 
+        `Existe una relación estadísticamente significativa entre ${v1.toLowerCase()} y ${v2.toLowerCase()} en ${pob.toLowerCase()}, ${ctx}.`;
+
+      document.getElementById('matrixColMetodo').innerHTML = `
+        <div class="font-bold text-navy-900">Enfoque: Cuantitativo</div>
+        <div>V1 (Indep.): ${v1}</div>
+        <div>V2 (Dep.): ${v2}</div>
+        <div>Diseño: No experimental correlacional</div>
+      `;
+    }
+
+    function loadSampleMatrix() {
+      document.getElementById('matrizV1').value = "Teletrabajo y Ergonomía";
+      document.getElementById('matrizV2').value = "Desempeño Laboral";
+      document.getElementById('matrizPoblacion').value = "colaboradores del sector tecnológico";
+      document.getElementById('matrizContexto').value = "Lima, 2026";
+      generateMatrixInRealtime();
+      showToast("Ejemplo de matriz cargado", "info");
+    }
+
+    // --- 4. RENDERIZACIÓN DE LOS 11 AGENTES ---
+    function renderAgents() {
+      const container = document.getElementById('agentGridContainer');
+      container.innerHTML = '';
+
+      appState.agents.forEach(agent => {
+        const card = document.createElement('div');
+        card.className = "p-5 rounded-2xl bg-navy-850/80 border border-slate-800 hover:border-brand-500/50 hover:bg-navy-800 transition shadow-sm group flex flex-col justify-between";
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl p-2 rounded-xl bg-white/5 border border-white/10 group-hover:scale-110 transition-transform">${agent.icon}</span>
+              <div>
+                <h4 class="font-bold text-white text-sm tracking-tight font-display">${agent.name}</h4>
+                <span class="text-[11px] text-brand-400 font-semibold">${agent.role}</span>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">${agent.desc}</p>
+          </div>
+          <div class="pt-3 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-[10px] text-slate-500 uppercase font-bold">Estado: Operativo</span>
+            <button onclick="openChatAdvisor('¿Cómo puede ayudarme el agente ${agent.name} en mi tesis?')" class="text-xs text-brand-400 hover:text-white font-bold transition flex items-center gap-1">
+              <span>Consultar</span>
+              <span>→</span>
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // --- 5. COTIZADOR Y AGENDAMIENTO ---
+    function setPriceLevel(levelKey, price) {
+      appState.basePrice = price;
+
+      ['pregrado', 'maestria', 'doctorado', 'articulo'].forEach(k => {
+        const b = document.getElementById('btnLevel-' + k);
+        if (b) {
+          b.className = "level-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold text-xs text-center hover:bg-slate-50 transition";
+        }
+      });
+
+      const activeBtn = document.getElementById('btnLevel-' + levelKey);
+      if (activeBtn) {
+        activeBtn.className = "level-btn p-3 rounded-xl border border-brand-500 bg-brand-50 text-brand-700 font-bold text-xs text-center transition";
+      }
+
+      calcTotalQuote();
+    }
+
+    function calcTotalQuote() {
+      let total = appState.basePrice;
+      if (document.getElementById('srv-estadistica').checked) total += 80;
+      if (document.getElementById('srv-mentoria').checked) total += 50;
+      if (document.getElementById('srv-defensa').checked) total += 60;
+
+      document.getElementById('totalQuotePrice').innerText = `$${total} USD`;
+    }
+
+    function fillBookingFromQuote() {
+      document.getElementById('bookDate').focus();
+      showToast("Cotización vinculada. Selecciona tu fecha de preferencia.", "info");
+    }
+
+    function confirmBooking(e) {
+      e.preventDefault();
+      const name = document.getElementById('bookName').value;
+      const date = document.getElementById('bookDate').value;
+      const time = document.getElementById('bookTime').value;
+      const specialist = document.getElementById('bookSpecialist').value;
+      const price = document.getElementById('totalQuotePrice').innerText;
+
+      document.getElementById('ticketName').innerText = name;
+      document.getElementById('ticketSpecialist').innerText = specialist.split(' (')[0];
+      document.getElementById('ticketDateTime').innerText = `${date} a las ${time}`;
+      document.getElementById('ticketPrice').innerText = price;
+      document.getElementById('ticketCode').innerText = "AP-2026-" + Math.floor(1000 + Math.random() * 9000);
+
+      document.getElementById('bookingTicketModal').classList.remove('hidden');
+    }
+
+    function closeBookingModal() {
+      document.getElementById('bookingTicketModal').classList.add('hidden');
+    }
+
+    function downloadTicketMock() {
+      alert("Comprobante oficial AcademiaPro AI generado en formato digital. Se ha remitido una copia a tu correo institucional con el enlace de Zoom y las instrucciones del Fiscalizador.");
+      closeBookingModal();
+    }
+
+    // --- 6. CHAT DEL AGENTE COORDINADOR ---
+    function openChatAdvisor(initialQuery) {
+      document.getElementById('chatAdvisorModal').classList.remove('hidden');
+      if (initialQuery) {
+        sendChatMessage(initialQuery);
+      }
+    }
+
+    function closeChatAdvisor() {
+      document.getElementById('chatAdvisorModal').classList.add('hidden');
+    }
+
+    function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('chatInput');
+      const val = input.value.trim();
+      if (!val) return;
+      sendChatMessage(val);
+      input.value = '';
+    }
+
+    function sendChatMessage(text) {
+      const history = document.getElementById('chatHistory');
+      
+      // Mensaje del usuario
+      const userBubble = document.createElement('div');
+      userBubble.className = "flex gap-2 justify-end";
+      userBubble.innerHTML = `
+        <div class="bg-brand-600 p-3 rounded-2xl rounded-tr-none text-white shadow-sm max-w-[85%]">
+          ${text}
+        </div>
+      `;
+      history.appendChild(userBubble);
+      history.scrollTop = history.scrollHeight;
+
+      // Respuesta simulada del Coordinador
+      setTimeout(() => {
+        let answer = "Comprendo tu requerimiento. He canalizado tu consulta con el especialista idóneo de nuestra red.";
+        const low = text.toLowerCase();
+
+        if (low.includes('problema') || low.includes('planteamiento')) {
+          answer = "Para estructurar el planteamiento del problema según el método del embudo: 1) Contextualiza el fenómeno a nivel global, 2) Delimita la realidad problemática local, 3) Formula la pregunta general conectando variables. El agente <strong>thesis-advisor</strong> puede revisar tu borrador.";
+        } else if (low.includes('apa') || low.includes('cita')) {
+          answer = "En APA 7, la cita narrativa destaca al autor como sujeto de la oración: 'Pérez (2023) afirma que...'. La cita parentética coloca autor y año entre paréntesis al final: '...la inteligencia artificial (Pérez, 2023)'. Recuerda la regla et al. para ≥3 autores.";
+        } else if (low.includes('muestra') || low.includes('aiken')) {
+          answer = "Puedes usar nuestro módulo en vivo en la sección de herramientas. Para poblaciones finitas requerimos N, margen de error (5%) y nivel de confianza Z=1.96. El agente <strong>instrument-validator</strong> calculará la muestra automáticamente.";
+        } else if (low.includes('scopus') || low.includes('revista')) {
+          answer = "El agente <strong>journal-matcher</strong> analiza índices SJR y cuartiles Q1-Q4. Puedes revisar nuestro comparador en vivo para encontrar revistas sin costo de APC (Open Access Diamante).";
+        }
+
+        const botBubble = document.createElement('div');
+        botBubble.className = "flex gap-2";
+        botBubble.innerHTML = `
+          <div class="w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center text-[10px] shrink-0 font-bold">AP</div>
+          <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 text-slate-800 shadow-sm max-w-[85%]">
+            ${answer}
+          </div>
+        `;
+        history.appendChild(botBubble);
+        history.scrollTop = history.scrollHeight;
+      }, 400);
+    }
+
+    // --- UTILIDADES GLOBALES ---
+    function copyToClipboard(elementId, btnElement) {
+      const el = document.getElementById(elementId);
+      const text = el.innerText || el.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = btnElement.innerHTML;
+        btnElement.innerHTML = `<span>✓ ¡Copiado!</span>`;
+        setTimeout(() => btnElement.innerHTML = originalText, 2000);
+        showToast("Texto copiado al portapapeles con éxito", "success");
+      });
+    }
+
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      
+      let borderCol = "border-brand-500 bg-white text-navy-900";
+      if (type === 'success') borderCol = "border-emerald-500 bg-white text-navy-900";
+      
+      toast.className = `p-3 px-4 rounded-xl shadow-xl border-l-4 ${borderCol} text-xs font-bold transition-all duration-300 transform translate-y-2 opacity-0 pointer-events-auto flex items-center gap-2`;
+      toast.innerHTML = `<span>${type === 'success' ? '✓' : 'ℹ'}</span><span>${message}</span>`;
+
+      container.appendChild(toast);
+      
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-2', 'opacity-0');
+      });
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+    // --- INICIALIZACIÓN AL CARGAR LA PÁGINA ---
+    window.addEventListener('DOMContentLoaded', () => {
+      renderMilestones();
+      renderAgents();
+      calcTotalQuote();
+      buildBooleanEquation();
+      filterJournals();
+      calcSampleAdvanced();
+      renderAikenJudgesInputs();
+      generateMatrixInRealtime();
+
+      // Configurar fecha mínima de agendamiento como hoy
+      const today = new Date().toISOString().split('T')[0];
+      const datePicker = document.getElementById('bookDate');
+      if (datePicker) datePicker.value = today;
+    });
+  </script>
+</body>
+</html>
