@@ -6,7 +6,7 @@ La web estática de GitHub Pages llama a este Worker mediante `POST /api/chat`. 
 ## 1. Crear el Worker
 1. Entra a https://dash.cloudflare.com/ y abre **Workers & Pages**.
 2. Crea un Worker llamado `itap-ai`.
-3. Despliega el contenido de esta carpeta usando Wrangler desde tu equipo o el editor de Cloudflare. El archivo principal es `src/index.js` y el archivo de configuración es `wrangler.toml`.
+3. Despliega el contenido de esta carpeta usando Wrangler desde tu equipo o el editor de Cloudflare. El archivo principal es `src/index.js`, la base de conocimiento compilada está en `src/knowledge.js` y el archivo de configuración es `wrangler.toml`.
 
 ## 2. Añadir la clave como secreto
 En Cloudflare, abre el Worker > **Settings > Variables and Secrets > Add** y crea el secreto:
@@ -19,7 +19,7 @@ No pegues la clave en GitHub, en el HTML, en mensajes públicos ni en `wrangler.
 La variable `ALLOWED_ORIGINS` está configurada para `https://cristinalb2012-ui.github.io`. Si el sitio se publica en otro dominio, actualiza esa variable con el origen exacto (sin ruta final). El Worker limita el tamaño de las solicitudes y el historial enviado; para producción con tráfico elevado, añade Cloudflare Rate Limiting o Turnstile.
 
 ## 4. Conectar el frontend
-Tras desplegar, copia la URL del Worker, por ejemplo `https://itap-ai.TU-SUBDOMINIO.workers.dev`. En `index.html`, sustituye el valor de `ITAP_CHAT_API_URL` por esa URL seguida de `/api/chat`.
+Tras desplegar, copia la URL del Worker, por ejemplo `https://itap-ai.TU-SUBDOMINIO.workers.dev`. En `index.html`, sustituye el valor de `ITAP_CHAT_API_URL` por esa URL seguida de `/api/chat`. El archivo `knowledge.md` es la versión editable para lectura; `src/knowledge.js` es la copia que el Worker importa en producción. Si cambias el contenido de la web, actualiza ambos.
 
 ## 5. Probar
 Envía preguntas como:

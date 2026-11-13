@@ -1,4 +1,4 @@
-import SITE_KNOWLEDGE from "./knowledge.md";
+import SITE_KNOWLEDGE from "./knowledge.js";
 
 const DEFAULT_MODEL = "gpt-4o-mini";
 const DEFAULT_API_URL = "https://api.openai.com/v1/chat/completions";
