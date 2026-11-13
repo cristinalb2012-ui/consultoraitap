@@ -1886,7 +1886,9 @@ Gómez, J., Morales, M., Rojas, F., & Delgado, E. (2020). Inteligencia artificia
     }
 
     // --- 6. ITAP AI: CHAT INTELIGENTE CON BACKEND ---
-    const ITAP_CHAT_API_URL = "https://YOUR-WORKER-SUBDOMAIN.workers.dev/api/chat";
+    // --- ITAP AI: ASISTENTE LOCAL SIN API NI SERVIDOR ---
+    // Recupera información directamente del contenido publicado en esta página.
+    // No envía consultas ni datos del visitante a servicios externos.
     const itapChatMessages = [];
     let itapChatBusy = false;
 
@@ -1928,6 +1930,51 @@ Gómez, J., Morales, M., Rojas, F., & Delgado, E. (2020). Inteligencia artificia
       return row;
     }
 
+    function itapNormalize(value) {
+      return value.toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9ñ ]/g, ' ').replace(/\s+/g, ' ').trim();
+    }
+
+    function itapFindPageInformation(question) {
+      const root = document.querySelector('main') || document.body;
+      const blocks = [...root.querySelectorAll('h1,h2,h3,h4,p,li,article,section')];
+      const stop = new Set(['como','para','este','esta','esto','donde','cuando','cual','cuales','quiero','saber','sobre','tiene','tienen','puede','pueden','desde','hasta','entre','porque','que','una','uno','unos','unas','del','las','los','con','por','sin','sus','hay','ser','son','es','me','mi','de','la','el','en','y','o']);
+      const terms = itapNormalize(question).split(' ').filter(w => w.length > 2 && !stop.has(w));
+      if (!terms.length) return [];
+      const candidates = blocks.map((el, index) => {
+        const text = (el.innerText || el.textContent || '').replace(/\s+/g, ' ').trim();
+        if (text.length < 35 || text.length > 1400) return null;
+        const normalized = itapNormalize(text);
+        let score = 0;
+        terms.forEach(term => { if (normalized.includes(term)) score += term.length > 6 ? 3 : 2; });
+        const heading = el.matches('h1,h2,h3,h4') ? 2 : 0;
+        return score ? { text, score: score + heading, index } : null;
+      }).filter(Boolean);
+      candidates.sort((a,b) => b.score-a.score || a.index-b.index);
+      const unique = [];
+      for (const item of candidates) {
+        if (!unique.some(x => itapNormalize(x.text) === itapNormalize(item.text))) unique.push(item);
+        if (unique.length === 5) break;
+      }
+      return unique;
+    }
+
+    function itapLocalAnswer(question) {
+      const q = itapNormalize(question);
+      const results = itapFindPageInformation(question);
+      const greetings = ['hola','buenos dias','buenas tardes','buenas noches','saludos'];
+      if (greetings.some(x => q === x || q.startsWith(x + ' '))) {
+        return '¡Hola! Soy el asistente digital de ITAP. Puedo ayudarte a localizar información sobre los servicios, herramientas y procesos que aparecen en esta página. Cuéntame qué necesitas conocer.';
+      }
+      if (/^(gracias|muchas gracias|te agradezco)/.test(q)) {
+        return '¡Con gusto! Si tienes otra consulta sobre los servicios o herramientas de ITAP, aquí estoy para orientarte.';
+      }
+      if (!results.length || results[0].score < 3) {
+        return 'No encuentro información suficiente sobre esa consulta en el contenido publicado de ITAP. Para evitar darte datos incorrectos, prefiero no inventar una respuesta. Puedes reformular la pregunta con palabras relacionadas con el servicio o herramienta que buscas, o consultar directamente al equipo de ITAP.';
+      }
+      const excerpts = results.slice(0,4).map(x => '• ' + x.text);
+      return 'Encontré esta información relacionada con tu consulta en la página de ITAP:\n\n' + excerpts.join('\n\n') + '\n\nEsta respuesta se basa en el contenido publicado en el sitio. Si me precisas qué aspecto deseas ampliar, puedo ayudarte a localizar información más concreta.';
+    }
+
     async function sendChatMessage(message) {
       if (itapChatBusy || !message?.trim()) return;
       const history = document.getElementById('chatHistory');
@@ -1937,27 +1984,14 @@ Gómez, J., Morales, M., Rojas, F., & Delgado, E. (2020). Inteligencia artificia
       if (sendButton) sendButton.disabled = true;
       if (input) input.disabled = true;
       addItapChatBubble('user', message.trim());
-      itapChatMessages.push({ role: 'user', content: message.trim() });
-      const typing = addItapChatBubble('assistant', 'Estoy revisando tu consulta y la información de ITAP…');
-      typing.querySelector('.itap-bot-bubble').setAttribute('aria-live', 'polite');
+      const typing = addItapChatBubble('assistant', 'Estoy buscando en la información de ITAP…');
       try {
-        if (ITAP_CHAT_API_URL.includes('YOUR-WORKER-SUBDOMAIN')) {
-          throw new Error('El asistente está instalado, pero falta conectar la URL de Cloudflare Workers. Consulta la guía de configuración del proyecto.');
-        }
-        const response = await fetch(ITAP_CHAT_API_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ messages: itapChatMessages.slice(-12) })
-        });
-        const data = await response.json().catch(() => ({}));
-        if (!response.ok) throw new Error(data.error || 'No fue posible obtener una respuesta del asistente.');
-        const answer = typeof data.answer === 'string' ? data.answer : '';
-        if (!answer) throw new Error('El asistente no devolvió una respuesta. Inténtalo nuevamente.');
+        await new Promise(resolve => setTimeout(resolve, 250));
+        const answer = itapLocalAnswer(message.trim());
         typing.querySelector('.itap-bot-bubble').textContent = answer;
-        itapChatMessages.push({ role: 'assistant', content: answer });
+        itapChatMessages.push({ question: message.trim(), answer });
       } catch (error) {
-        typing.querySelector('.itap-bot-bubble').textContent = error.message || 'Ocurrió un problema de conexión. Inténtalo nuevamente.';
-        itapChatMessages.pop();
+        typing.querySelector('.itap-bot-bubble').textContent = 'No pude procesar la consulta. Inténtalo nuevamente.';
       } finally {
         history.scrollTop = history.scrollHeight;
         itapChatBusy = false;
